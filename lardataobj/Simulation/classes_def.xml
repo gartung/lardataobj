@@ -40,7 +40,8 @@
   <version ClassVersion="11" checksum="1122283400"/>
   <version ClassVersion="10" checksum="2225942541"/>
  </class>
- <class name="sim::OpDetBacktrackerRecord" ClassVersion="10">
+ <class name="sim::OpDetBacktrackerRecord" ClassVersion="11">
+  <version ClassVersion="11" checksum="1336777815"/>
   <version ClassVersion="10" checksum="2389124613"/>
  </class>
  <enum name="sim::BeamType_t"                                      />
