@@ -44,6 +44,9 @@
   <version ClassVersion="11" checksum="1336777815"/>
   <version ClassVersion="10" checksum="2389124613"/>
  </class>
+ <class name="sim::SimEDep"                      ClassVersion="10">
+  <version ClassVersion="10" checksum="80970123"/>
+ </class>
  <enum name="sim::BeamType_t"                                      />
  <class name="std::vector<sim::OnePhoton>"                         />
  <class name="std::vector<sim::SimPhotonsLite>"                    />
@@ -54,6 +57,7 @@
  <class name="std::vector<sim::IDE>"                               />
  <class name="std::vector<sim::BeamGateInfo>" 	    		    	     />
  <class name="std::vector<sim::OpDetBacktrackerRecord>"                      />
+ <class name="std::vector<sim::SimEDep  >"                		   />
  <class name="sim::TDCIDE"                                         />
  <class name="std::vector<sim::TDCIDE>"            	               />
  <class name="sim::SDP" />
@@ -66,6 +70,7 @@
  <class name="art::Wrapper< std::vector<sim::BeamGateInfo> >"		   />
  <class name="art::Wrapper< std::vector<sim::AuxDetSimChannel>  >" />
  <class name="art::Wrapper< std::vector<sim::OpDetBacktrackerRecord> >"      />
+ <class name="art::Wrapper< std::vector<sim::SimEDep>   >"		   />
 <!---Remove the following lines once DUNE no longer uses files containing
      DUNE10ktPhotons.  11 September 2013 brebel-->
  <class name="sim::DUNE10ktPhotons"                                />

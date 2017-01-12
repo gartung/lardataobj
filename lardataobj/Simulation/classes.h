@@ -19,3 +19,4 @@
 #include "lardataobj/Simulation/SimPhotons.h"
 #include "lardataobj/Simulation/BeamGateInfo.h"
 #include "lardataobj/Simulation/AuxDetSimChannel.h"
+#include "lardataobj/Simulation/SimEDep.h"
