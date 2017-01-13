@@ -26,3 +26,4 @@
 #include "lardataobj/RecoBase/PFParticle.h"
 #include "lardataobj/RecoBase/PCAxis.h"
 #include "lardataobj/RecoBase/TrackHitMeta.h"
+#include "lardataobj/RecoBase/FittedTrack.h"

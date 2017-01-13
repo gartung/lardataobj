@@ -109,6 +109,9 @@
  </class>
  <class name="recob::TrackHitMeta">
  </class>
+ <class name="recob::FittedTrack"      ClassVersion="10"                   >
+  <version ClassVersion="10" checksum="996511300"/>
+ </class>
  
  <!-- art pointers and pointer vectors -->
  <class name="art::Ptr<recob::Hit>"                             />
@@ -379,6 +382,29 @@
  <class name="art::Wrapper< art::Assns<recob::Wire,       raw::RawDigit,     void          > >" />
  <class name="art::Wrapper< art::Assns<recob::Wire,       recob::Hit,        void          > >" />
 
+ <class name="art::Ptr<recob::FittedTrack>"                     />
+ <class name="art::PtrVector<recob::FittedTrack>"               />
+ <class name="std::vector<recob::FittedTrack>"/>
+ <class name="std::vector<art::PtrVector<recob::FittedTrack> >"/>
+ <class name="art::Wrapper<std::vector<recob::FittedTrack> >" />
+ <class name="art::Wrapper<std::vector<art::PtrVector<recob::FittedTrack> > >" />
+
+ <class name="std::pair<art::Ptr<recob::FittedTrack>,art::Ptr<recob::Hit> >" />
+ <class name="art::Assns<recob::FittedTrack, recob::Hit, void>"           />
+ <class name="art::Wrapper<art::Assns<recob::FittedTrack,recob::Hit, void> >" />
+ <class name="art::Wrapper<art::Assns<recob::FittedTrack,recob::Hit, unsigned int> >" />
+
+ <class name="std::pair<art::Ptr<recob::PFParticle>,art::Ptr<recob::FittedTrack> >" />
+ <class name="art::Assns<recob::PFParticle, recob::FittedTrack, void>"           />
+ <class name="art::Wrapper<art::Assns<recob::PFParticle,recob::FittedTrack, void> >" />
+ <class name="art::Wrapper<art::Assns<recob::PFParticle,recob::FittedTrack, unsigned int> >" />
+
+<!--
+ <class name="art::Assns<recob::Hit,        recob::FittedTrack,void>"           />
+ <class name="std::pair< art::Ptr<recob::Hit>,        art::Ptr<recob::FittedTrack> >" />
+ <class name="art::Wrapper< art::Assns<recob::Hit,        recob::FittedTrack,void          > >" />
+--> 
+ 
 <!-- <ioread 
     version="[-11]" 
     sourceClass="recob::Wire" 
