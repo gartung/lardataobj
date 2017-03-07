@@ -1,6 +1,6 @@
 /**
  * @file   SimEDep.h
- * @brief  object containing MC energy deposits and electron/photon creation
+ * @brief  object containing MC energy deposits
  * @author wketchum@fnal.gov
  * 
  * This class uses only LArSoft libraries that are header only.
@@ -24,36 +24,23 @@ namespace sim {
     float zpos;
 
     float energy;
-
-    //these elements should be removed when ionization/scintillation
-    //code is decoupled from LArG4 geometry and/or can be handled in
-    //different step
-    int n_el;  //number electrons
-    int n_ph;  //number photons
-
-    //these elements should be removed once TPC/cryo location is decoupled
-    // (used in DriftIonizationElectrons)
-    int trackID;
-    unsigned short int tpc;
-    unsigned short int cryostat;
+    int   trackID;
+    int   pdgCode;
 
     SimEDep() {}
 
 #ifndef __GCCXML__
 
     SimEDep(float x, float y, float z, double t,
-	    float e, int ne, int np,
-	    int trk, unsigned short int i_t, unsigned short int i_c)
+	    float e,
+	    int trk, int pdg)
     : time(t),
       xpos(x),
       ypos(y),
       zpos(z),
       energy(e),
-      n_el(ne),
-      n_ph(np),
       trackID(trk),
-      tpc(i_t),
-      cryostat(i_c)
+      pdgCode(pdg)
     {}
 
 #endif

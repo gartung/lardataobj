@@ -44,7 +44,8 @@
   <version ClassVersion="11" checksum="1336777815"/>
   <version ClassVersion="10" checksum="2389124613"/>
  </class>
- <class name="sim::SimEDep"                      ClassVersion="10">
+ <class name="sim::SimEDep"                      ClassVersion="11">
+  <version ClassVersion="11" checksum="360197160"/>
   <version ClassVersion="10" checksum="80970123"/>
  </class>
  <enum name="sim::BeamType_t"                                      />
