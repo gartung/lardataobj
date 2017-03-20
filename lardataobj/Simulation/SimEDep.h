@@ -22,6 +22,7 @@ namespace sim {
     float xpos;  
     float ypos;
     float zpos;
+    float ds;
 
     float energy;
     int   trackID;
@@ -31,13 +32,16 @@ namespace sim {
 
 #ifndef __GCCXML__
 
-    SimEDep(float x, float y, float z, double t,
+    SimEDep(float x, float y, float z,
+	    float deltas,
+	    double t,
 	    float e,
 	    int trk, int pdg)
     : time(t),
       xpos(x),
       ypos(y),
       zpos(z),
+      ds(deltas),
       energy(e),
       trackID(trk),
       pdgCode(pdg)
