@@ -11,6 +11,7 @@
 #include "canvas/Persistency/Common/Assns.h"
 
 #include "lardataobj/AnalysisBase/Calorimetry.h"
+#include "lardataobj/AnalysisBase/TrueCalorimetry.h"
 #include "lardataobj/AnalysisBase/ParticleID.h"
 #include "lardataobj/AnalysisBase/MVAPIDResult.h"
 #include "lardataobj/AnalysisBase/FlashMatch.h"

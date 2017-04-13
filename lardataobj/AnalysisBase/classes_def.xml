@@ -21,6 +21,9 @@
   <version ClassVersion="12" checksum="1421274164"/>
   <version ClassVersion="11" checksum="495386863"/>
  </class>
+ <class name="anab::TrueCalorimetry"       ClassVersion="10"                           >
+  <version ClassVersion="10" checksum="3666656289"/>
+ </class>
  <class name="anab::ParticleID"            ClassVersion="13"                           >
   <version ClassVersion="13" checksum="3664244500"/>
   <version ClassVersion="12" checksum="1769449101"/>
@@ -44,12 +47,14 @@
  </class>
  <enum name="anab::cosmic_tag_id"                                                      />
  <class name="std::vector<anab::Calorimetry>"                                          />
+ <class name="std::vector<anab::TrueCalorimetry>"                                          />
  <class name="std::vector<anab::ParticleID>"                                           />
  <class name="std::vector<anab::MVAPIDResult>"                                         />
  <class name="std::vector<anab::FlashMatch>"                                           />
  <class name="std::vector<anab::CosmicTag>"                                            />
  <class name="std::vector<anab::T0>"                                                   />
  <class name="art::Ptr<anab::Calorimetry>"                                   	       />
+ <class name="art::Ptr<anab::TrueCalorimetry>"                                   	       />
  <class name="art::Ptr<anab::ParticleID>"                                              />
  <class name="art::Ptr<anab::MVAPIDResult>"                                            />
  <class name="art::Ptr<anab::FlashMatch>"                                   	       />
@@ -59,6 +64,8 @@
  <class name="std::pair< art::Ptr<anab::Calorimetry>, art::Ptr<recob::Track>      >"   />
  <class name="std::pair< art::Ptr<recob::Shower>,      art::Ptr<anab::Calorimetry> >"   />
  <class name="std::pair< art::Ptr<anab::Calorimetry>, art::Ptr<recob::Shower>      >"   /> 
+ <class name="std::pair< art::Ptr<anab::Calorimetry>, art::Ptr<anab::TrueCalorimetry> >"/> 
+ <class name="std::pair< art::Ptr< art::Ptr<anab::TrueCalorimetry>, anab::Calorimetry> >"/> 
  <class name="std::pair< art::Ptr<recob::Track>,      art::Ptr<anab::ParticleID> >"    />
  <class name="std::pair< art::Ptr<anab::ParticleID>, art::Ptr<recob::Track>      >"    />
  <class name="std::pair< art::Ptr<recob::Track>,     art::Ptr<anab::MVAPIDResult>   >" /> 
@@ -85,6 +92,8 @@
  <class name="art::Assns<anab::Calorimetry, recob::Track,       void>"	               />
  <class name="art::Assns<recob::Shower,      anab::Calorimetry,  void>"	               />
  <class name="art::Assns<anab::Calorimetry, recob::Shower,       void>"	               />
+ <class name="art::Assns<anab::Calorimetry, anab::TrueCalorimetry, void>"	           />
+ <class name="art::Assns<anab::TrueCalorimetry, anab::Calorimetry, void>"	           />
  <class name="art::Assns<recob::Track,      anab::ParticleID,  void>"	               />
  <class name="art::Assns<anab::ParticleID, recob::Track,       void>"	               />
  <class name="art::Assns<recob::Track,       anab::MVAPIDResult,  void>"               />
@@ -118,10 +127,13 @@
  <class name="art::Assns<raw::ExternalTrigger, anab::T0,       void>"                  />
  <class name="art::Assns<recob::OpFlash,    anab::T0,          void>"                  />
  <class name="art::Wrapper< std::vector<anab::Calorimetry>      	>"	       />
+ <class name="art::Wrapper< std::vector<anab::TrueCalorimetry>      	>"	       />
  <class name="art::Wrapper<art::Assns<recob::Track,      anab::Calorimetry,  void> >"  />
  <class name="art::Wrapper<art::Assns<anab::Calorimetry, recob::Track,       void> >"  />
  <class name="art::Wrapper<art::Assns<recob::Shower,      anab::Calorimetry,  void> >"  />
  <class name="art::Wrapper<art::Assns<anab::Calorimetry, recob::Shower,       void> >"  />
+ <class name="art::Wrapper<art::Assns<anab::TrueCalorimetry, anab::Calorimetry, void> >" />
+ <class name="art::Wrapper<art::Assns<anab::Calorimetry, anab::TrueCalorimetry, void> >" />
  <class name="art::Wrapper< std::vector<anab::ParticleID>      	>"	               />
  <class name="art::Wrapper<art::Assns<recob::Track,      anab::ParticleID,  void> >"   />
  <class name="art::Wrapper<art::Assns<anab::ParticleID,  recob::Track,       void> >"   />
