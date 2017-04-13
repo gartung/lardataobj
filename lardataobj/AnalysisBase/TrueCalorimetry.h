@@ -35,7 +35,7 @@ namespace anab {
     std::vector<double> fTrkPitch;        ///< track pitch on collection plane
     std::vector<TVector3> fXYZ;           ///< coordinates of IDEs
 
-    std::vector<UShort_t> fwire;           ///< wire id number for each calo hit
+    std::vector<unsigned int> fwire;           ///< wire id number for each calo hit
     std::vector<double> fdE;           ///< Energy deposited in TPC for each calo hit
     std::vector<double> fdQ;           ///< Charge collected by the wire for each calo hit
 
@@ -53,9 +53,9 @@ namespace anab {
 		double Range,
 		double TrkPitch,
 		geo::PlaneID planeID,
-        std::vector<UShort_t> wire,
-        std::vector<double> dE,
-        std::vector<double> dQ
+        std::vector<unsigned int> const& wire,
+        std::vector<double> const& dE,
+        std::vector<double> const& dQ
         );
 
     TrueCalorimetry(double KineticEnergy,
@@ -66,9 +66,9 @@ namespace anab {
 		double Range,
 		std::vector<double> const& TrkPitch,
 		geo::PlaneID planeID,
-        std::vector<UShort_t> wire,
-        std::vector<double> dE,
-        std::vector<double> dQ
+        std::vector<unsigned int> const& wire,
+        std::vector<double> const& dE,
+        std::vector<double> const& dQ
         );
 
     TrueCalorimetry(double KineticEnergy,
@@ -80,9 +80,9 @@ namespace anab {
 		std::vector<double> const& TrkPitch,
 		std::vector<TVector3> const& XYZ,
 		geo::PlaneID planeID,
-        std::vector<UShort_t> wire,
-        std::vector<double> dE,
-        std::vector<double> dQ
+        std::vector<unsigned int> const& wire,
+        std::vector<double> const& dE,
+        std::vector<double> const& dQ
         );
 
     friend std::ostream& operator << (std::ostream &o, TrueCalorimetry const& a);
@@ -97,7 +97,7 @@ namespace anab {
     const std::vector<double>& TrkPitchVec()   const;
     const std::vector<TVector3>& XYZ()         const;
     const geo::PlaneID&        PlaneID()       const;
-    const std::vector<UShort_t>& Wire()       const;
+    const std::vector<unsigned int>& Wire()       const;
     const std::vector<double>& dE()   const;
     const std::vector<double>& dQ()   const;
 
@@ -124,7 +124,7 @@ inline double                     anab::TrueCalorimetry::TrkPitchC()     const
 }
 inline const std::vector<TVector3>& anab::TrueCalorimetry::XYZ()         const { return fXYZ;      }
 inline const geo::PlaneID& anab::TrueCalorimetry::PlaneID()              const { return fPlaneID; }
-inline const std::vector<UShort_t>& anab::TrueCalorimetry::Wire()   const { return fwire;      }
+inline const std::vector<unsigned int>& anab::TrueCalorimetry::Wire()   const { return fwire;      }
 inline const std::vector<double>& anab::TrueCalorimetry::dE()   const { return fdE;      }
 inline const std::vector<double>& anab::TrueCalorimetry::dQ()   const { return fdQ;      }
 

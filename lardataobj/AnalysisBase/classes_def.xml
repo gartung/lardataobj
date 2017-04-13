@@ -64,8 +64,6 @@
  <class name="std::pair< art::Ptr<anab::Calorimetry>, art::Ptr<recob::Track>      >"   />
  <class name="std::pair< art::Ptr<recob::Shower>,      art::Ptr<anab::Calorimetry> >"   />
  <class name="std::pair< art::Ptr<anab::Calorimetry>, art::Ptr<recob::Shower>      >"   /> 
- <class name="std::pair< art::Ptr<anab::Calorimetry>, art::Ptr<anab::TrueCalorimetry> >"/> 
- <class name="std::pair< art::Ptr< art::Ptr<anab::TrueCalorimetry>, anab::Calorimetry> >"/> 
  <class name="std::pair< art::Ptr<recob::Track>,      art::Ptr<anab::ParticleID> >"    />
  <class name="std::pair< art::Ptr<anab::ParticleID>, art::Ptr<recob::Track>      >"    />
  <class name="std::pair< art::Ptr<recob::Track>,     art::Ptr<anab::MVAPIDResult>   >" /> 
@@ -92,8 +90,6 @@
  <class name="art::Assns<anab::Calorimetry, recob::Track,       void>"	               />
  <class name="art::Assns<recob::Shower,      anab::Calorimetry,  void>"	               />
  <class name="art::Assns<anab::Calorimetry, recob::Shower,       void>"	               />
- <class name="art::Assns<anab::Calorimetry, anab::TrueCalorimetry, void>"	           />
- <class name="art::Assns<anab::TrueCalorimetry, anab::Calorimetry, void>"	           />
  <class name="art::Assns<recob::Track,      anab::ParticleID,  void>"	               />
  <class name="art::Assns<anab::ParticleID, recob::Track,       void>"	               />
  <class name="art::Assns<recob::Track,       anab::MVAPIDResult,  void>"               />
@@ -132,8 +128,6 @@
  <class name="art::Wrapper<art::Assns<anab::Calorimetry, recob::Track,       void> >"  />
  <class name="art::Wrapper<art::Assns<recob::Shower,      anab::Calorimetry,  void> >"  />
  <class name="art::Wrapper<art::Assns<anab::Calorimetry, recob::Shower,       void> >"  />
- <class name="art::Wrapper<art::Assns<anab::TrueCalorimetry, anab::Calorimetry, void> >" />
- <class name="art::Wrapper<art::Assns<anab::Calorimetry, anab::TrueCalorimetry, void> >" />
  <class name="art::Wrapper< std::vector<anab::ParticleID>      	>"	               />
  <class name="art::Wrapper<art::Assns<recob::Track,      anab::ParticleID,  void> >"   />
  <class name="art::Wrapper<art::Assns<anab::ParticleID,  recob::Track,       void> >"   />

@@ -37,9 +37,9 @@ namespace anab{
 			   double Range,
 			   double TrkPitch,
 			   geo::PlaneID planeID,
-               std::vector<UShort_t> wire,
-               std::vector<double> dE,
-               std::vector<double> dQ) 
+               std::vector<unsigned int> const& wire,
+               std::vector<double> const& dE,
+               std::vector<double> const& dQ) 
   {
  
     fKineticEnergy = KineticEnergy;
@@ -103,9 +103,9 @@ namespace anab{
 			   double Range,
 			   std::vector<double> const& TrkPitch,
 			   geo::PlaneID planeID,
-               std::vector<UShort_t> wire,
-               std::vector<double> dE,
-               std::vector<double> dQ) 
+               std::vector<unsigned int> const& wire,
+               std::vector<double> const& dE,
+               std::vector<double> const& dQ) 
   {
     
     fPlaneID = planeID;
@@ -168,9 +168,9 @@ namespace anab{
 			   std::vector<double> const& TrkPitch,
 			   std::vector<TVector3> const& XYZ,
 			   geo::PlaneID planeID,
-               std::vector<UShort_t> wire,
-               std::vector<double> dE,
-               std::vector<double> dQ) 
+               std::vector<unsigned int> const& wire,
+               std::vector<double> const& dE,
+               std::vector<double> const& dQ) 
   {
     
     fPlaneID = planeID;
