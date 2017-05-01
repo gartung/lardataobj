@@ -1,14 +1,11 @@
-////////////////////////////////////////////////////////////////////////////
-// \version $Id: Edge.cxx,v 1.5 2010/02/15 20:32:46 usher Exp $
-//
-// \file  Edge.cxx
-// \brief Definition of Principal Components Axis object for LArSoft
-//
-// \author usher@slac.stanford.edu
-//
-// \see   Edge.h
-//
-////////////////////////////////////////////////////////////////////////////
+/**
+ * @file   Edge.cxx
+ * @brief  Definition of Principal Components Axis object for LArSoft.
+ * @author Tracy Usher (usher@slac.stanford.edu)
+ * @see    Edge.h
+ * 
+ */
+
 
 #include "lardataobj/RecoBase/Edge.h"
 
