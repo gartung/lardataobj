@@ -30,5 +30,13 @@ cet_test(TrackTrajectory_test USE_BOOST_UNIT
     ${ROOT_MATRIX}
   )
 
+cet_test(SpacePoint_test USE_BOOST_UNIT
+  LIBRARIES lardataobj_RecoBase
+  )
+
+cet_test(Edge_test USE_BOOST_UNIT
+  LIBRARIES lardataobj_RecoBase
+  )
+
 install_headers()
 install_source()
