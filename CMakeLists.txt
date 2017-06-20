@@ -45,8 +45,6 @@ find_ups_product(cetlib_except)
 find_ups_boost( )
 find_ups_root( )
 
-message(STATUS "larcoreobj_SummaryData: ${LARCOREOBJ_SUMMARYDATA}")
-
 # macros for artdaq_dictionary and simple_plugin
 include(ArtDictionary)
 include(CetMake)
