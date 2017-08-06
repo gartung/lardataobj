@@ -45,6 +45,7 @@
   <version ClassVersion="10" checksum="2389124613"/>
  </class>
  <class name="sim::ProtoDUNEbeamsim" ClassVersion="10">
+  <version ClassVersion="10" checksum="4021958745"/>
  </class>
  <enum name="sim::BeamType_t"                                      />
  <class name="std::pair< art::Ptr<sim::ProtoDUNEbeamsim>, art::Ptr<simb::MCTruth> >" />

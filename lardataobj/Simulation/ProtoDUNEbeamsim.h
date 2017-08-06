@@ -42,6 +42,7 @@ namespace sim {
     Float_t         TRIG2_Px;
     Float_t         TRIG2_Py;
     Float_t         TRIG2_Pz;
+    Float_t         TRIG2_PDGid;
     Float_t         TRIG2_EventID;
     Float_t         TRIG2_TrackID;
     Float_t         Lag_ENTRY_x;
@@ -50,6 +51,7 @@ namespace sim {
     Float_t         Lag_ENTRY_Px;
     Float_t         Lag_ENTRY_Py;
     Float_t         Lag_ENTRY_Pz;
+    Float_t         Lag_ENTRY_PDGid;
     Float_t         Lag_ENTRY_EventID;
     Float_t         Lag_ENTRY_TrackID;
     
@@ -131,6 +133,7 @@ namespace sim {
 	    	void SetTRIG2_Px(Float_t val);
 	    	void SetTRIG2_Py(Float_t val);
 	    	void SetTRIG2_Pz(Float_t val);
+	    	void SetTRIG2_PDGid(Float_t val);
 	    	void SetTRIG2_EventID(Float_t val);
 	    	void SetTRIG2_TrackID(Float_t val);
 	    	void SetLag_ENTRY_x(Float_t val);
@@ -139,6 +142,7 @@ namespace sim {
 	    	void SetLag_ENTRY_Px(Float_t val);
 	    	void SetLag_ENTRY_Py(Float_t val);
 	    	void SetLag_ENTRY_Pz(Float_t val);
+	    	void SetLag_ENTRY_PDGid(Float_t val);
 	    	void SetLag_ENTRY_EventID(Float_t val);
 	    	void SetLag_ENTRY_TrackID(Float_t val);
   

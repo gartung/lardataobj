@@ -24,6 +24,7 @@ namespace sim{
      TRIG2_Px=0;
      TRIG2_Py=0;
      TRIG2_Pz=0;
+     TRIG2_PDGid=0;
      TRIG2_EventID=0;
      TRIG2_TrackID=0;
      Lag_ENTRY_x=0;
@@ -195,45 +196,45 @@ namespace sim{
     return TRIG2_TrackID;
   }
   //-------------------------------------------------------------------------
-  Float_t ProtoDUNEbeamsim::get_LAG_ENTRY_x() const
+  Float_t ProtoDUNEbeamsim::get_Lag_ENTRY_x() const
   {
-    return LAG_ENTRY_x;
+    return Lag_ENTRY_x;
   }
   //-------------------------------------------------------------------------
-  Float_t ProtoDUNEbeamsim::get_LAG_ENTRY_y() const
+  Float_t ProtoDUNEbeamsim::get_Lag_ENTRY_y() const
   {
-    return LAG_ENTRY_y;
+    return Lag_ENTRY_y;
   }
   //-------------------------------------------------------------------------
-  Float_t ProtoDUNEbeamsim::get_LAG_ENTRY_z() const
+  Float_t ProtoDUNEbeamsim::get_Lag_ENTRY_z() const
   {
-    return LAG_ENTRY_z;
+    return Lag_ENTRY_z;
   }
   //-------------------------------------------------------------------------
-  Float_t ProtoDUNEbeamsim::get_LAG_ENTRY_Px() const
+  Float_t ProtoDUNEbeamsim::get_Lag_ENTRY_Px() const
   {
-    return LAG_ENTRY_Px;
+    return Lag_ENTRY_Px;
   }
   //-------------------------------------------------------------------------
-  Float_t ProtoDUNEbeamsim::get_LAG_ENTRY_Py() const
+  Float_t ProtoDUNEbeamsim::get_Lag_ENTRY_Py() const
   {
-    return LAG_ENTRY_Py;
+    return Lag_ENTRY_Py;
   }
   //-------------------------------------------------------------------------
-  Float_t ProtoDUNEbeamsim::get_LAG_ENTRY_Pz() const
+  Float_t ProtoDUNEbeamsim::get_Lag_ENTRY_Pz() const
   {
-    return LAG_ENTRY_Pz;
+    return Lag_ENTRY_Pz;
   }
 
   //-------------------------------------------------------------------------
-  Float_t ProtoDUNEbeamsim::get_LAG_ENTRY_EventID() const
+  Float_t ProtoDUNEbeamsim::get_Lag_ENTRY_EventID() const
   {
-    return LAG_ENTRY_EventID;
+    return Lag_ENTRY_EventID;
   }
   //-------------------------------------------------------------------------
-  Float_t ProtoDUNEbeamsim::get_LAG_ENTRY_TrackID() const
+  Float_t ProtoDUNEbeamsim::get_Lag_ENTRY_TrackID() const
   {
-    return LAG_ENTRY_TrackID;
+    return Lag_ENTRY_TrackID;
   }
  //-----------MUTATORS-------------------//
 
@@ -341,69 +342,63 @@ namespace sim{
     TRIG2_TrackID= val;
   }
 
-// SECTION FOR LAG_ENTRY
+// SECTION FOR Lag_ENTRY
 
   //-------------------------------------------------------------------------
-  void  ProtoDUNEbeamsim::SetLAG_ENTRY_x(Float_t val)
+  void  ProtoDUNEbeamsim::SetLag_ENTRY_x(Float_t val)
   { 
-    LAG_ENTRY_x= val;
-  }
-
-  //-------------------------------------------------------------------------
-  void  ProtoDUNEbeamsim::SetLAG_ENTRY_y(Float_t val)
-  { 
-    LAG_ENTRY_y= val;
+    Lag_ENTRY_x= val;
   }
 
   //-------------------------------------------------------------------------
-  void  ProtoDUNEbeamsim::SetLAG_ENTRY_z(Float_t val)
+  void  ProtoDUNEbeamsim::SetLag_ENTRY_y(Float_t val)
   { 
-    LAG_ENTRY_z= val;
+    Lag_ENTRY_y= val;
+  }
+
+  //-------------------------------------------------------------------------
+  void  ProtoDUNEbeamsim::SetLag_ENTRY_z(Float_t val)
+  { 
+    Lag_ENTRY_z= val;
   }
 
 
   //-------------------------------------------------------------------------
-  void  ProtoDUNEbeamsim::SetLAG_ENTRY_Px(Float_t val)
+  void  ProtoDUNEbeamsim::SetLag_ENTRY_Px(Float_t val)
   { 
-    LAG_ENTRY_Px= val;
+    Lag_ENTRY_Px= val;
   }
   //-------------------------------------------------------------------------
-  void  ProtoDUNEbeamsim::SetLAG_ENTRY_Py(Float_t val)
+  void  ProtoDUNEbeamsim::SetLag_ENTRY_Py(Float_t val)
   { 
-    LAG_ENTRY_Py= val;
+    Lag_ENTRY_Py= val;
   }
   //-------------------------------------------------------------------------
-  void  ProtoDUNEbeamsim::SetLAG_ENTRY_Pz(Float_t val)
+  void  ProtoDUNEbeamsim::SetLag_ENTRY_Pz(Float_t val)
   { 
-    LAG_ENTRY_Pz= val;
-  }
-
-  //-------------------------------------------------------------------------
-  void  ProtoDUNEbeamsim::SetLAG_ENTRY_PDGid(Float_t val)
-  { 
-    LAG_ENTRY_PDGid= val;
+    Lag_ENTRY_Pz= val;
   }
 
   //-------------------------------------------------------------------------
-  void  ProtoDUNEbeamsim::SetLAG_ENTRY_EventID(Float_t val)
+  void  ProtoDUNEbeamsim::SetLag_ENTRY_PDGid(Float_t val)
   { 
-    LAG_ENTRY_EventID= val;
+    Lag_ENTRY_PDGid= val;
+  }
+
+  //-------------------------------------------------------------------------
+  void  ProtoDUNEbeamsim::SetLag_ENTRY_EventID(Float_t val)
+  { 
+    Lag_ENTRY_EventID= val;
   }
   //-------------------------------------------------------------------------
-  void  ProtoDUNEbeamsim::SetLAG_ENTRY_TrackID(Float_t val)
+  void  ProtoDUNEbeamsim::SetLag_ENTRY_TrackID(Float_t val)
   { 
-    LAG_ENTRY_TrackID= val;
+    Lag_ENTRY_TrackID= val;
   }
 
 
 
   
-  void ProtoDUNEbeamsim::Set(std::string device, Float_t val)
-  {
-    std::vector<Float_t> vec;
-    vec.push_back(val);
-    Set(device,vec);
-  }
 
 
 
