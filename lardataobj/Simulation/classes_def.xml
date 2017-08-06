@@ -44,7 +44,14 @@
   <version ClassVersion="11" checksum="1336777815"/>
   <version ClassVersion="10" checksum="2389124613"/>
  </class>
+ <class name="sim::ProtoDUNEbeamsim" ClassVersion="10">
+ </class>
  <enum name="sim::BeamType_t"                                      />
+ <class name="std::pair< art::Ptr<sim::ProtoDUNEbeamsim>, art::Ptr<simb::MCTruth> >" />
+ <class name="std::pair< art::Ptr<simb::MCTruth>, art::Ptr<sim::ProtoDUNEbeamsim> >" />
+ <class name="art::Assns<sim::ProtoDUNEbeamsim, simb::MCTruth, void>" />
+ <class name="art::Assns<simb::MCTruth, sim::ProtoDUNEbeamsim, void>" />
+
  <class name="std::vector<sim::OnePhoton>"                         />
  <class name="std::vector<sim::SimPhotonsLite>"                    />
  <class name="std::vector<sim::SimPhotons  >" 		     		    	   />
@@ -54,6 +61,7 @@
  <class name="std::vector<sim::IDE>"                               />
  <class name="std::vector<sim::BeamGateInfo>" 	    		    	     />
  <class name="std::vector<sim::OpDetBacktrackerRecord>"                      />
+ <class name="std::vector<sim::ProtoDUNEbeamsim>"                    />
  <class name="sim::TDCIDE"                                         />
  <class name="std::vector<sim::TDCIDE>"            	               />
  <class name="sim::SDP" />
@@ -66,6 +74,9 @@
  <class name="art::Wrapper< std::vector<sim::BeamGateInfo> >"		   />
  <class name="art::Wrapper< std::vector<sim::AuxDetSimChannel>  >" />
  <class name="art::Wrapper< std::vector<sim::OpDetBacktrackerRecord> >"      />
+ <class name="art::Wrapper< std::vector<sim::ProtoDUNEbeamsim> >"      />
+ <class name="art::Wrapper< art::Assns<sim::ProtoDUNEbeamsim, simb::MCTruth, void> >" />
+ <class name="art::Wrapper< art::Assns<simb::MCTruth, sim::ProtoDUNEbeamsim, void> >" />
 
  <ioread 
     version="[-13]" 
