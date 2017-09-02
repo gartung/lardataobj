@@ -1,5 +1,4 @@
 ////////////////////////////////////////////////////////////////////////
-// $Id: ExternalTrigger.h 
 //
 // 
 //
@@ -27,7 +26,6 @@ namespace raw {
       unsigned int       fTrigID;
       TriggerTimeStamp_t fTrigTime;
 
-#ifndef __GCCXML__
 
   public:
 
@@ -41,12 +39,10 @@ namespace raw {
       unsigned int       GetTrigID()   const;
       TriggerTimeStamp_t GetTrigTime() const;
      
-#endif
     };
 
 }
 
-#ifndef __GCCXML__
 
 namespace raw{
   inline void               ExternalTrigger::SetTrigID(unsigned int i)         { fTrigID = i;      }
@@ -54,7 +50,6 @@ namespace raw{
   inline unsigned int       ExternalTrigger::GetTrigID()    const  { return fTrigID;   }  
   inline TriggerTimeStamp_t ExternalTrigger::GetTrigTime()  const  { return fTrigTime; }
 }
-#endif
 
 #endif // EXTERNALTRIGGER_H
 

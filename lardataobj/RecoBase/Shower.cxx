@@ -1,5 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////
-// \version $Id: Shower.cxx,v 1.2 2010/02/15 20:32:46 brebel Exp $
 //
 // \brief Definition of shower object for LArSoft
 //
@@ -14,6 +13,9 @@
 #include <iostream>
 
 namespace recob{
+  
+  // the value is assigned in the class definition:
+  constexpr double Shower::InvalidOpeningAngle;
 
   //----------------------------------------------------------------------
   Shower::Shower()
@@ -30,7 +32,9 @@ namespace recob{
 	   std::vector< double >  dEdx,
  	   std::vector< double >  dEdxErr,
 	   int bestplane,
-	   int     id)
+	   int     id,
+           double length,
+           double openAngle)
     : fID(id)
     , fDCosStart(dcosVtx)
     , fSigmaDCosStart(dcosVtxErr)
@@ -41,6 +45,8 @@ namespace recob{
     , fdEdx(std::move(dEdx))
     , fSigmadEdx(std::move(dEdxErr))
     , fBestPlane(bestplane)
+    , fLength(length)
+    , fOpenAngle(openAngle)
   {
    
   }

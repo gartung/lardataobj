@@ -7,7 +7,6 @@
 //
 // Ben Jones, MIT, 06/04/2010
 //
-/// \version $Id: ParticleHistory.cxx,v 1.1 2010/04/29 15:38:01 seligman Exp $
 
 
 #include "lardataobj/Simulation/SimPhotons.h"
@@ -58,12 +57,6 @@ namespace sim
   {
   }
 
-  /// \todo: Remove this constructor when DUNE makes the next round of production
-  ///        MC files - after 11 September 2013 brebel
-  //----------------------------------------------------------------------------
-  DUNE10ktPhotons::DUNE10ktPhotons()
-  {
-  }
 
   //----------------------------------------------------------------------------
   SimPhotons::SimPhotons()

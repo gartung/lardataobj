@@ -1,5 +1,4 @@
 /////////////////////////////////////////////////////////////////////
-// $Id: BeamInfo.h,v 1.3 2010/03/26 19:36:42 brebel Exp $
 //  information about the neutrino beam
 //  kinga.partyka@yale.edu
 ////////////////////////////////////////////////////////////////////
@@ -32,7 +31,6 @@ namespace raw {
     uint16_t      fNumberOfDevices;
     std::map<std::string, std::vector<double> > fDataMap;
 
-#ifndef __GCCXML__   
     
   public:
 
@@ -66,7 +64,6 @@ namespace raw {
 
     friend std::ostream& operator<<(std::ostream& , const BeamInfo& );
     
-#endif      
   };
   
   

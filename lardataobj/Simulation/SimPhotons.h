@@ -2,7 +2,6 @@
 /// \file  SimPhotons.h
 /// \brief contains objects relating to OpDet hits
 ///
-/// \version $Id: ParticleList.h,v 1.13 2010/05/13 16:12:20 seligman Exp $
 /// \author  Ben Jones
 ////////////////////////////////////////////////////////////////////////
 // This file contains the definitions of the classes which
@@ -70,15 +69,6 @@ namespace sim
       bool operator==(const SimPhotonsLite &other) const;
   };
 
-  /// \todo: Remove this class when DUNE makes the next round of production
-  ///        MC files - after 11 September 2013 brebel
-  class DUNE10ktPhotons
-  {
-    public:
-      DUNE10ktPhotons();
-      int   OpChannel;
-      std::map<int, int> DetectedPhotons;
-  };
 
   // Define a OpDet Hit as a list of OpDet photons which were
   // recorded in the OpDet volume.
@@ -93,7 +83,6 @@ namespace sim
 
       int  fOpChannel;  /// volume number for the OpDet
 
-#ifndef __GCCXML__
     public:
 
       typedef std::vector<OnePhoton>             list_type;
@@ -115,7 +104,6 @@ namespace sim
       int       OpChannel() const;
       void      SetChannel(int ch);
 
-#endif
       
     };
  
@@ -132,7 +120,6 @@ namespace sim
   private:
     std::string fTheSDName;
     
-#ifndef __GCCXML__
     
   public:
     typedef std::map<int,SimPhotons>           list_type;
@@ -160,12 +147,10 @@ namespace sim
     void SetSDName(std::string TheSDName);
     std::string GetSDName();
     
-#endif
   };
   
 }
 
-#ifndef __GCCXML__
 
 inline int         sim::SimPhotons::OpChannel()       const                     { return fOpChannel;      }
 inline void        sim::SimPhotons::SetChannel(int ch)                          { fOpChannel = ch;        }
@@ -175,6 +160,5 @@ inline void        sim::SimPhotonsCollection::SetSDName(std::string TheSDName)  
 inline bool sim::SimPhotons::operator==(const sim::SimPhotons& other) const          { return fOpChannel == other.OpChannel(); }
 inline bool sim::SimPhotonsLite::operator==(const sim::SimPhotonsLite& other) const  { return OpChannel == other.OpChannel; }
 
-#endif
 
 #endif

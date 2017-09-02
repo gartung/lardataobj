@@ -1,5 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////
-// \version $Id: Seed.h,v 1.4 2010/06/10 16:21:31 antonm Exp $
 //
 // \brief 3D seed object for kalman tracking and
 //           bezier tracking
@@ -31,7 +30,6 @@ namespace recob {
     double fSeedDirectionError[3];
     bool   fIsValid;
     
-#ifndef __GCCXML__
 
   public:
 
@@ -77,14 +75,11 @@ namespace recob {
 
     friend bool          operator <   (const Seed & a, const Seed & b);
 
-#endif
   };
 
-#ifndef __GCCXML__
   void CrossProd(double, double, double,
 		 double, double, double,
 		 double&, double&, double&);
-#endif
 }
 
 #endif // SEED_H

@@ -3,6 +3,7 @@
 #define MCHITCOLLECTION_H
 
 // C++ includes
+#include <vector>
 #include "lardataobj/MCBase/MCHit.h"
 
 namespace sim {
@@ -29,7 +30,6 @@ namespace sim {
 
     unsigned int fChannel; ///< Channel number
 
-#ifndef __GCCXML__
 
   public:
 
@@ -50,12 +50,10 @@ namespace sim {
       if(sort) std::sort(begin(),end());
       
     }
-#endif
   };
 }
 
 // Define a pointer comparison
-#ifndef __GCCXML__
 namespace std {
   template <>
   class less<sim::MCHitCollection*>
@@ -65,6 +63,5 @@ namespace std {
     { return (*lhs) < (*rhs); }
   };
 }
-#endif
 
 #endif 

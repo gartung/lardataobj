@@ -1,5 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////
-// \version $Id: OpFlash.h,v 1.7 2010/03/01 21:32:44 bpage Exp $
 //
 // \brief Definition of OpFlash object for LArSoft
 //
@@ -39,7 +38,6 @@ private:
       
 
 
-#ifndef __GCCXML__
 
   public:
       OpFlash(double time, double timewidth, double abstime, unsigned int frame,
@@ -72,13 +70,11 @@ private:
       double                TotalPE()           const;
       double                FastToTotal()       const;
 
-#endif
 
   };
 
 }
 
-#ifndef __GCCXML__
 
 inline double recob::OpFlash::Time()              const { return fTime;        }
 inline double recob::OpFlash::TimeWidth()         const { return fTimeWidth;   }
@@ -101,6 +97,5 @@ namespace recob{
   };
 }
 
-#endif
 
 #endif

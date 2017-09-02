@@ -1,5 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////
-// \version $Id: Event.h,v 1.4 2010/06/10 16:21:31 antonm Exp $
 //
 // \brief Definition of event object for LArSoft
 //
@@ -10,12 +9,10 @@
 #ifndef RB_EVENT_H
 #define RB_EVENT_H
 
-#ifndef __GCCXML__
 
 #include <iosfwd>
 #include <vector>
 
-#endif
 
 namespace recob {
 
@@ -30,7 +27,6 @@ namespace recob {
 
     int                  fID;       ///< id for this event
 
-#ifndef __GCCXML__
 
   public:
     explicit Event(int id);
@@ -43,15 +39,12 @@ namespace recob {
     friend std::ostream& operator << (std::ostream& o, const Event & a);
     friend bool          operator <  (const Event & a, const Event & b);
 
-#endif
 
   };
 }
 
-#ifndef __GCCXML__
 
 inline int  recob::Event::ID() const { return fID; }
 
-#endif
 
 #endif // RB_EVENT_H
