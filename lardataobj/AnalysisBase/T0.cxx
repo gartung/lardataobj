@@ -51,4 +51,18 @@ namespace anab{
     return o;
   }
   
+  //------------------------------------------------------------------------
+  // TriggerBits method slightly more complex to have a deprecation warning
+  //
+//#ifndef __GCCXML__
+//  const int&  T0::TriggerBits() const { 
+//    if (fTriggerType == 2){
+//      std::cout << "Warning, using deprecated functionality\n";
+//      std::cout << "using anab::T0 for reco-truth matching is no longer supported\n";
+//      std::cout << "Please use MCParticle direct associations instead" << std::endl;
+//    }
+//    return fTriggerBits;
+//  }
+//#endif
+
 }
