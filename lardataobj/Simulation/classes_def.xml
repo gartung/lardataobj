@@ -8,6 +8,9 @@
 
 
 <lcgdict>
+ <class name="sim::SimEnergyDeposit"         ClassVersion="12">
+  <version ClassVersion="12" checksum="410055122"/>
+ </class>
  <class name="sim::OnePhoton"                ClassVersion="13">
   <version ClassVersion="13" checksum="3677597673"/>
   <version ClassVersion="12" checksum="124883757"/>
@@ -56,6 +59,7 @@
  <class name="art::Assns<sim::SupernovaTruth, simb::MCTruth, void>" />
  <class name="art::Assns<simb::MCTruth, sim::SupernovaTruth, void>" />
 
+ <class name="std::vector<sim::SimEnergyDeposit>"                  />
  <class name="std::vector<sim::OnePhoton>"                         />
  <class name="std::vector<sim::SimPhotonsLite>"                    />
  <class name="std::vector<sim::SimPhotons  >" 		     		    	   />
