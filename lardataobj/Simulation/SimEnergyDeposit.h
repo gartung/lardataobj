@@ -83,6 +83,23 @@ namespace sim
     using Position4_t = ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<double>>;
     const Position4_t Position4D() const { return {xpos,ypos,zpos,time}; }
 
+    // Just in case someone wants to store sim::SimEnergyDeposit
+    // objects in a sorted container, define a sort function. Note
+    // that the ideal sort order is dependent of the analysis you're
+    // trying to perform; for example, if you're dealing with cosmic
+    // rays coming along the y-axis, sorting first by z may cause some
+    // tasks like insertions to take a very long time.
+
+    bool operator<(const SimEnergyDeposit& rhs) const
+    {
+      return trackID < rhs.trackID
+	&& time < rhs.time
+	&& zpos < rhs.zpos
+	&& ypos < rhs.ypos
+	&& xpos < rhs.xpos
+	&& edep > rhs.edep; // sort by _decreasing_ energy
+  }
+
 #endif
 
   private:
@@ -105,6 +122,20 @@ namespace sim
     double        time;       // (ns)
     int           trackID;    // track id
   };
+
+#ifndef __GCCXML__
+
+  // It can be more memory efficient to sort objects by pointers;
+  // e.g., if you've got an unsorted
+  // std::vector<sim::SimEnergyDeposit>, create a
+  // std::set<sim::SimEnergyDeposit*,sim::CompareSED> so you're not
+  // duplicating the objects in memory. The following definition
+  // covers sorting the pointers.
+  bool compareSED(const SimEnergyDeposit* const lhs, const SimEnergyDeposit* const rhs)
+  { 
+    return (*lhs) < (*rhs); 
+  }
+#endif
 
 } // namespace sim
 #endif // SimEnergyDeposit_n
