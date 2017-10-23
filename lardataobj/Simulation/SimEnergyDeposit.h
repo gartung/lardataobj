@@ -28,33 +28,50 @@
 #ifndef SimEnergyDeposit_h
 #define SimEnergyDeposit_h
 
-#include "TVector3.h"
-#include "TLorentzVector.h"
-#include "Math/GenVector/Cartesian3D.h" 
-#include "Math/GenVector/PositionVector3D.h" 
-#include "Math/GenVector/PxPyPzE4D.h" 
-#include "Math/GenVector/LorentzVector.h" 
+// LArSoft includes
+// Define the LArSoft standard geometry types and methods.
+#include "larcoreobj/SimpleTypesAndConstants/geo_vectors.h"
+
+// ROOT includes
+#include "Math/GenVector/Cartesian3D.h"
+#include "Math/GenVector/PositionVector3D.h"
+
+// C++ includes
+#include <iostream>
 
 namespace sim
 {
   class SimEnergyDeposit 
   {
   public:
+
+    // Define the types for the private members below. 
+    using Length_t = float;
+    using Point_t = ROOT::Math::PositionVector3D< ROOT::Math::Cartesian3D<Length_t> >;
+
+    // Since we're using LArSoft geometry types, the typical way to
+    // construct a SimEnergyDeposit might be:
+    //   sim::SimEnergyDeposit sed(numPhotons,
+    //   		           stepEnergy,
+    //			           {startX,startY,startZ},
+    //			           {endX,endY,endZ},
+    //			           time,
+    //			           trackID);
+
     SimEnergyDeposit(int np = 0,
 		     double e = 0,
-		     double x = 0,
-		     double y = 0,
-		     double z = 0,
+		     Point_t start = {0.,0.,0.},
+		     Point_t end = {0.,0.,0.},
 		     double t = 0,
 		     int id = 0)
       : numPhotons(np)
       , edep(e)
-      , xpos(x)
-      , ypos(y)
-      , zpos(z)
+      , startPos(start)
+      , endPos(end)
       , time(t)
       , trackID(id)
-    {};
+    {}
+
 
 #ifndef __GCCXML__
     // Accessors, hidden from the ROOT dictionary generation.
@@ -64,9 +81,8 @@ namespace sim
 
     int NumPhotons() const { return numPhotons; }
     double E() const { return edep; }
-    double X() const { return xpos; }
-    double Y() const { return ypos; }
-    double Z() const { return zpos; }
+    geo::Point_t Start() const { return { startPos.X(), startPos.Y(), startPos.Z() }; }
+    geo::Point_t End() const { return { endPos.X(), endPos.Y(), endPos.Z() }; }
     double T() const { return time; }
     int TrackID() const { return trackID; }
 
@@ -74,14 +90,32 @@ namespace sim
     // constructor, it's not clear how users will want to access its
     // data. So give them as many different kinds of accessors as I
     // can think of.
-    const TVector3 Position() const { return TVector3(xpos,ypos,zpos); }
-    const TLorentzVector FourVector() const { return TLorentzVector(xpos,ypos,zpos,time); }
+    geo::Length_t StartX() const { return startPos.X(); }
+    geo::Length_t StartY() const { return startPos.Y(); }
+    geo::Length_t StartZ() const { return startPos.Z(); }
+    geo::Length_t EndX() const { return endPos.X(); }
+    geo::Length_t EndY() const { return endPos.Y(); }
+    geo::Length_t EndZ() const { return endPos.Z(); }
 
-    using Point_t = ROOT::Math::PositionVector3D<ROOT::Math::Cartesian3D<double>>;
-    const Point_t Position3D() const { return {xpos,ypos,zpos}; }
+    // Step mid-point. 
+    geo::Point_t MidPoint() const {
+      return { 
+	  ( startPos.X() + endPos.X() )/2. 
+	, ( startPos.Y() + endPos.Y() )/2.
+	, ( startPos.Z() + endPos.Z() )/2. 
+	    };
+    }
+    geo::Length_t MidPointX() const { return ( startPos.X() + endPos.X() )/2.; } 
+    geo::Length_t MidPointY() const { return ( startPos.Y() + endPos.Y() )/2.; } 
+    geo::Length_t MidPointZ() const { return ( startPos.Z() + endPos.Z() )/2.; } 
+    geo::Length_t X() const { return ( startPos.X() + endPos.X() )/2.; } 
+    geo::Length_t Y() const { return ( startPos.Y() + endPos.Y() )/2.; } 
+    geo::Length_t Z() const { return ( startPos.Z() + endPos.Z() )/2.; } 
 
-    using Position4_t = ROOT::Math::LorentzVector<ROOT::Math::PxPyPzE4D<double>>;
-    const Position4_t Position4D() const { return {xpos,ypos,zpos,time}; }
+    // Step length. (Recall that the difference between two
+    // geo::Point_t objects is a geo::Vector_t; we get the length from
+    // spherical coordinates.
+    geo::Length_t StepLength() const { return ( endPos - startPos ).R(); }
 
     // Just in case someone wants to store sim::SimEnergyDeposit
     // objects in a sorted container, define a sort function. Note
@@ -94,21 +128,26 @@ namespace sim
     {
       return trackID < rhs.trackID
 	&& time < rhs.time
-	&& zpos < rhs.zpos
-	&& ypos < rhs.ypos
-	&& xpos < rhs.xpos
+	&& startPos.Z() < rhs.startPos.Z()
+	&& startPos.Y() < rhs.startPos.Y()
+	&& startPos.X() < rhs.startPos.X()
 	&& edep > rhs.edep; // sort by _decreasing_ energy
-  }
+    }
 
-#endif
+#endif // __GCCXML__
 
   private:
+    // While the accessors above return all values in double
+    // precision, store whatever we can in single precision to save
+    // memory and disk space.
 
     // There are roughly 7 digits of decimal precision in a float.
-    // This will suffice for energy and position (the largest LAr TPC
-    // presently comtemplated is on the order of 10^2 meters, the
-    // position accuracy need be no better than 10^-4 meters). 
-    // 
+    // This will suffice for energy. A float (as opposed to a double)
+    // can hold a little more than 7 digits of decimal precision. The
+    // smallest position resolution in the simulation is about 0.1mm,
+    // or 10^-4m. With seven digits of precision, that means a float
+    // can be accurate to up to the range of 10^3m. 
+
     // For time, it's possible for long-lived particles like neutrons
     // to deposit energy after billions of ns. Chances are time cuts
     // will take care of that, but let's make sure that any overlay studies
@@ -116,14 +155,30 @@ namespace sim
 
     int           numPhotons; // of scintillation photons
     float         edep;       // energy deposition (GeV)
-    float         xpos;       // position (mm)
-    float         ypos;
-    float         zpos;
+    Point_t       startPos;   // positions in (cm)
+    Point_t       endPos;
     double        time;       // (ns)
-    int           trackID;    // track id
+    int           trackID;    // simulation track id
   };
 
 #ifndef __GCCXML__
+  // Class utility functions. 
+
+  // The format of the sim::SimEnergyDeposit output. I'm using a
+  // template for the ostream type, since LArSoft may have some
+  // special classes for its output streams.
+  template <typename Stream>
+  Stream& operator<<(Stream&& os, const sim::SimEnergyDeposit& sed)
+  {
+    // Note that the geo::Point_t type has an ostream operator defined
+    // for it.
+    os << "trackID " << sed.TrackID()
+       << " start=" << sed.Start()
+       << " end=" << sed.End()
+       << " time=" << sed.T() << " [cm,ns]"
+       << " E=" << sed.E() << "[GeV]"
+       << " #photons=" << sed.NumPhotons();
+  }
 
   // It can be more memory efficient to sort objects by pointers;
   // e.g., if you've got an unsorted
@@ -135,7 +190,7 @@ namespace sim
   { 
     return (*lhs) < (*rhs); 
   }
-#endif
+#endif // __GCCXML__
 
 } // namespace sim
 #endif // SimEnergyDeposit_n
