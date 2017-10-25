@@ -111,6 +111,7 @@ namespace sim
     geo::Length_t X() const { return ( startPos.X() + endPos.X() )/2.; } 
     geo::Length_t Y() const { return ( startPos.Y() + endPos.Y() )/2.; } 
     geo::Length_t Z() const { return ( startPos.Z() + endPos.Z() )/2.; } 
+    double Time() const { return time; }
 
     // Step length. (Recall that the difference between two
     // geo::Point_t objects is a geo::Vector_t; we get the length from
@@ -146,7 +147,9 @@ namespace sim
     // can hold a little more than 7 digits of decimal precision. The
     // smallest position resolution in the simulation is about 0.1mm,
     // or 10^-4m. With seven digits of precision, that means a float
-    // can be accurate to up to the range of 10^3m. 
+    // can be accurate to up to the range of 10^3m. That's why the
+    // definition of our local Point_t (see above) is based on float,
+    // while geo::Point_t is based on double.
 
     // For time, it's possible for long-lived particles like neutrons
     // to deposit energy after billions of ns. Chances are time cuts
@@ -170,14 +173,15 @@ namespace sim
   template <typename Stream>
   Stream& operator<<(Stream&& os, const sim::SimEnergyDeposit& sed)
   {
-    // Note that the geo::Point_t type has an ostream operator defined
-    // for it.
+    // Note that the geo::Point_t type (returned by Start() and End())
+    // has an ostream operator defined for it.
     os << "trackID " << sed.TrackID()
        << " start=" << sed.Start()
        << " end=" << sed.End()
        << " time=" << sed.T() << " [cm,ns]"
        << " E=" << sed.E() << "[GeV]"
        << " #photons=" << sed.NumPhotons();
+    return os;
   }
 
   // It can be more memory efficient to sort objects by pointers;
