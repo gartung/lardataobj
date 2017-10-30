@@ -35,6 +35,8 @@
 // ROOT includes
 #include "Math/GenVector/Cartesian3D.h"
 #include "Math/GenVector/PositionVector3D.h"
+#include "Math/GenVector/PxPyPzE4D.h" 
+#include "Math/GenVector/LorentzVector.h" 
 
 // C++ includes
 #include <iostream>
@@ -52,23 +54,29 @@ namespace sim
     // Since we're using LArSoft geometry types, the typical way to
     // construct a SimEnergyDeposit might be:
     //   sim::SimEnergyDeposit sed(numPhotons,
+    //                             numElectrons,
     //   		           stepEnergy,
-    //			           {startX,startY,startZ},
-    //			           {endX,endY,endZ},
-    //			           time,
+    //			           { startX, startY, startZ },
+    //			           { endX,   endY,   endZ   },
+    //			           startTime, 
+    //                             endTime,
     //			           trackID);
 
     SimEnergyDeposit(int np = 0,
-		     double e = 0,
+		     int ne = 0,
+		     double e = 0.,
 		     Point_t start = {0.,0.,0.},
 		     Point_t end = {0.,0.,0.},
-		     double t = 0,
+		     double t0 = 0.,
+		     double t1 = 0.,
 		     int id = 0)
       : numPhotons(np)
+      , numElectrons(ne)
       , edep(e)
       , startPos(start)
       , endPos(end)
-      , time(t)
+      , startTime(t0)
+      , endTime(t1)
       , trackID(id)
     {}
 
@@ -80,10 +88,11 @@ namespace sim
     // precision issues. 
 
     int NumPhotons() const { return numPhotons; }
-    double E() const { return edep; }
+    int NumElectrons() const { return numElectrons; }
+    double Energy() const { return edep; }
     geo::Point_t Start() const { return { startPos.X(), startPos.Y(), startPos.Z() }; }
     geo::Point_t End() const { return { endPos.X(), endPos.Y(), endPos.Z() }; }
-    double T() const { return time; }
+    double Time() const { return (startTime+endTime)/2.; }
     int TrackID() const { return trackID; }
 
     // While it's clear how a SimEnergyDeposit will be created by its
@@ -93,9 +102,11 @@ namespace sim
     geo::Length_t StartX() const { return startPos.X(); }
     geo::Length_t StartY() const { return startPos.Y(); }
     geo::Length_t StartZ() const { return startPos.Z(); }
+    double StartT() const { return startTime; }
     geo::Length_t EndX() const { return endPos.X(); }
     geo::Length_t EndY() const { return endPos.Y(); }
     geo::Length_t EndZ() const { return endPos.Z(); }
+    double EndT() const { return endTime; }
 
     // Step mid-point. 
     geo::Point_t MidPoint() const {
@@ -111,7 +122,10 @@ namespace sim
     geo::Length_t X() const { return ( startPos.X() + endPos.X() )/2.; } 
     geo::Length_t Y() const { return ( startPos.Y() + endPos.Y() )/2.; } 
     geo::Length_t Z() const { return ( startPos.Z() + endPos.Z() )/2.; } 
-    double Time() const { return time; }
+    double T() const { return (startTime+endTime)/2.; }
+    double T0() const { return startTime; }
+    double T1() const { return endTime; }
+    double E() const { return edep; }
 
     // Step length. (Recall that the difference between two
     // geo::Point_t objects is a geo::Vector_t; we get the length from
@@ -128,7 +142,7 @@ namespace sim
     bool operator<(const SimEnergyDeposit& rhs) const
     {
       return trackID < rhs.trackID
-	&& time < rhs.time
+	&& startTime < rhs.startTime
 	&& startPos.Z() < rhs.startPos.Z()
 	&& startPos.Y() < rhs.startPos.Y()
 	&& startPos.X() < rhs.startPos.X()
@@ -149,19 +163,26 @@ namespace sim
     // or 10^-4m. With seven digits of precision, that means a float
     // can be accurate to up to the range of 10^3m. That's why the
     // definition of our local Point_t (see above) is based on float,
-    // while geo::Point_t is based on double.
+    // while geo::Point_t is based on double. 
+
+    // If the above reasoning is wrong, just change the definition of
+    // Length_t near the top of this file. Of course, also edit these
+    // comments if you do, because you're a good and responsible
+    // programmer.
 
     // For time, it's possible for long-lived particles like neutrons
     // to deposit energy after billions of ns. Chances are time cuts
     // will take care of that, but let's make sure that any overlay studies
     // won't suffer due to lack of precision.
 
-    int           numPhotons; // of scintillation photons
-    float         edep;       // energy deposition (GeV)
-    Point_t       startPos;   // positions in (cm)
+    int           numPhotons;   //< of scintillation photons
+    int           numElectrons; //< of ionization electrons 
+    float         edep;         //< energy deposition (GeV)
+    Point_t       startPos;     //< positions in (cm)
     Point_t       endPos;
-    double        time;       // (ns)
-    int           trackID;    // simulation track id
+    double        startTime;    //< (ns)
+    double        endTime;      //< (ns)
+    int           trackID;      //< simulation track id
   };
 
 #ifndef __GCCXML__
@@ -177,8 +198,9 @@ namespace sim
     // has an ostream operator defined for it.
     os << "trackID " << sed.TrackID()
        << " start=" << sed.Start()
+       << " t0=" << sed.T0()
        << " end=" << sed.End()
-       << " time=" << sed.T() << " [cm,ns]"
+       << " t1=" << sed.T1() << " [cm,ns]"
        << " E=" << sed.E() << "[GeV]"
        << " #photons=" << sed.NumPhotons();
     return os;
