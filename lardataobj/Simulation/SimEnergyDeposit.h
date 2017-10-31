@@ -177,7 +177,7 @@ namespace sim
 
     int           numPhotons;   //< of scintillation photons
     int           numElectrons; //< of ionization electrons 
-    float         edep;         //< energy deposition (GeV)
+    float         edep;         //< energy deposition (MeV)
     Point_t       startPos;     //< positions in (cm)
     Point_t       endPos;
     double        startTime;    //< (ns)
