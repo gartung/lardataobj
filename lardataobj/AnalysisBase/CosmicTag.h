@@ -18,7 +18,7 @@
 
 namespace anab {
 
-  typedef enum cosmic_tag_id{
+   typedef enum cosmic_tag_id{
     kUnknown=-1,
     kNotTagged=0,
     kGeometry_YY=1,
@@ -30,6 +30,18 @@ namespace anab {
     kGeometry_Y=21,
     kGeometry_Z,
     kGeometry_X,
+    kGeometry_XXO,
+    kGeometry_YYO,
+    kGeometry_ZZO,
+    kGeometry_XDZ,
+    kGeometry_YDZ,
+    kGeometry_XP,
+    kGeometry_YP,
+    kGeometry_ZP,
+    kGeometry_ZD,
+    kGeometry_ZU,
+    kGeometry_YUZ,
+    kGeometry_XUZ,
     kOutsideDrift_Partial=100,
     kOutsideDrift_Complete,
     kFlash_BeamIncompatible=200,
@@ -87,3 +99,4 @@ inline const anab::CosmicTagID_t& anab::CosmicTag::CosmicType() const {return fC
 
 
 #endif //ANAB_COSMICTAG
+
