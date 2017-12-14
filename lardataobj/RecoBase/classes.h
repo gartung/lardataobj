@@ -1,5 +1,5 @@
 /**
- * @file classes.h
+ * @file RecoBase/classes.h
  * @brief Dictionary selection for RecoBase
  * 
  * Original author Rob Kutschke, modified by klg
@@ -34,3 +34,5 @@
 #include "lardataobj/RecoBase/TrackFitHitInfo.h"
 
 #include "lardataobj/RecoBase/MCSFitResult.h"
+
+#include "lardataobj/RecoBase/VertexAssnMeta.h"

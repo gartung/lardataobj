@@ -1,5 +1,4 @@
 <!--                                                                                  -->
-<!--  $Id: classes_def.xml,v 1.10 2010/04/12 18:12:28  Exp $                          -->
 <!--  $Author:  $                                                                     -->
 <!--  $Date: 2010/04/12 18:12:28 $                                                    -->
 <!--                                                                                  -->
@@ -92,7 +91,8 @@
  <class name="recob::SpacePoint"       ClassVersion="12"                   >
   <version ClassVersion="12" checksum="4256037352"/>
  </class>
- <class name="recob::Vertex"           ClassVersion="12"                   >
+ <class name="recob::Vertex"           ClassVersion="13"                   >
+  <version ClassVersion="13" checksum="1229739518"/>
   <version ClassVersion="12" checksum="1317803878"/>
  </class>
  <class name="recob::Event"            ClassVersion="11"                   >
@@ -113,6 +113,10 @@
   <version ClassVersion="10" checksum="1923850317"/>
  </class>
 
+ <class name="recob::VertexAssnMeta" ClassVersion="10"                   >
+  <version ClassVersion="10" checksum="135721609"/>
+ </class>
+
  <!-- art pointers and pointer vectors -->
  <class name="art::Ptr<recob::Hit>"                             />
  <class name="art::Ptr<recob::Cluster>"                         />
@@ -127,6 +131,7 @@
  <class name="art::Ptr<recob::OpFlash>"                         />
  <class name="art::Ptr<recob::TrackFitHitInfo>"                 />
  <class name="art::Ptr<recob::MCSFitResult>"                    />
+ <class name="art::Ptr<recob::VertexAssnMeta>" />
  <class name="art::PtrVector<recob::Hit>"                       />
  <class name="art::PtrVector<recob::Event>"                     />
  <class name="art::PtrVector<recob::Cluster>"                   />
@@ -199,8 +204,8 @@
  <class name="art::Assns<recob::Cluster,    recob::SpacePoint, void          >" />
  <class name="art::Assns<recob::Cluster,    recob::Vertex,     void          >" />
  <class name="art::Assns<recob::Cluster,    recob::Vertex,     unsigned short>" />
- <class name="art::Assns<recob::EndPoint2D, recob::Hit,        void          >" />
- <class name="art::Assns<recob::EndPoint2D, recob::Cluster,    void          >" />
+ <class name="art::Assns<recob::EndPoint2D, recob::Hit,        void>"           />
+ <class name="art::Assns<recob::EndPoint2D, recob::Cluster,    void>"           />
  <class name="art::Assns<recob::EndPoint2D, recob::Cluster,    unsigned short>" />
  <class name="art::Assns<recob::Event,      recob::Hit,        void          >" />
  <class name="art::Assns<recob::Event,      recob::Vertex,     void          >" />
@@ -249,6 +254,8 @@
  <class name="art::Assns<recob::Vertex,     recob::Shower,     void          >" />
  <class name="art::Assns<recob::Wire,       raw::RawDigit,     void          >" />
  <class name="art::Assns<recob::Wire,       recob::Hit,        void          >" />
+ <class name="art::Assns<recob::Vertex, recob::Track, recob::VertexAssnMeta>" />
+ <class name="art::Assns<recob::Track, recob::Vertex, recob::VertexAssnMeta>" />
  
  <!-- vectors for data products -->
  <class name="std::vector<recob::Cluster>"    />
@@ -267,6 +274,7 @@
  <class name="std::vector<recob::MCSFitResult>"    />
  <class name="std::vector<recob::TrackFitHitInfo>" />
  <class name="std::vector<std::vector<recob::TrackFitHitInfo> >" />
+ <class name="std::vector<recob::VertexAssnMeta>" />
  
  <!-- art data product wrappers -->
  <class name="art::Wrapper< std::vector< recob::Cluster                     > >" />
@@ -348,6 +356,8 @@
  <class name="art::Wrapper< art::Assns<recob::Vertex,     recob::Shower,     void          > >" />
  <class name="art::Wrapper< art::Assns<recob::Wire,       raw::RawDigit,     void          > >" />
  <class name="art::Wrapper< art::Assns<recob::Wire,       recob::Hit,        void          > >" />
+ <class name="art::Wrapper< art::Assns<recob::Vertex,     recob::Track,      recob::VertexAssnMeta>>" />
+ <class name="art::Wrapper< art::Assns<recob::Track,      recob::Vertex,     recob::VertexAssnMeta>>" />
 
 <!-- <ioread 
     version="[-11]" 
@@ -663,6 +673,33 @@
     ]]>
   </ioread> 
   
+  <!-- recob::Vertex: schema evolution rules -->
+      <!-- version 13 -->
+        <!-- * position -->
+  <ioread
+    version="[-12]"
+    sourceClass="recob::Vertex"
+    source="double fXYZ[3];"
+    targetClass="recob::Vertex"
+    target="pos_"
+    include="lardataobj/RecoBase/Vertex.h">
+    <![CDATA[
+	 pos_ = recob::tracking::Point_t(onfile.fXYZ[0],onfile.fXYZ[1],onfile.fXYZ[2]);
+    ]]>
+  </ioread>
+        <!-- * id -->
+  <ioread
+    version="[-12]"
+    sourceClass="recob::Vertex"
+    source="int fID;"
+    targetClass="recob::Vertex"
+    target="id_"
+    include="lardataobj/RecoBase/Vertex.h">
+    <![CDATA[
+	 id_ = onfile.fID;
+    ]]>
+  </ioread>
+
   
     <!-- art pointers and wrappers -->
   <class name="art::Ptr<recob::Track>" />

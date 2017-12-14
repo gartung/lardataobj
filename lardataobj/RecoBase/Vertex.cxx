@@ -1,5 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////
-// \version $Id: Vertex.cxx,v 1.4 2010/06/10 16:21:31 antonm Exp $
 //
 // \brief Definition of vertex object for LArSoft
 //
@@ -17,25 +16,29 @@ namespace recob{
   //----------------------------------------------------------------------
   Vertex::Vertex()
   {
-
+    status_ = Invalid;
+    id_ = util::kBogusI;
+    chi2_ = util::kBogusD;
+    ndof_ = util::kBogusI;
   }
 
   //----------------------------------------------------------------------
   Vertex::Vertex(double *xyz,
 		 int id)
-    : fID(id)
+    : id_(id)
   {
-    fXYZ[0] = xyz[0];
-    fXYZ[1] = xyz[1];
-    fXYZ[2] = xyz[2];
+    pos_ = Point_t(xyz[0],xyz[1],xyz[2]);
+    status_ = Valid;
+    chi2_ = util::kBogusD;
+    ndof_ = util::kBogusI;
   }
 
   //----------------------------------------------------------------------
   void Vertex::XYZ(double *xyz) const
   {
-    xyz[0] = fXYZ[0];
-    xyz[1] = fXYZ[1];
-    xyz[2] = fXYZ[2];
+    xyz[0] = pos_.X();
+    xyz[1] = pos_.Y();
+    xyz[2] = pos_.Z();
 
     return;
   }
@@ -46,9 +49,9 @@ namespace recob{
   std::ostream& operator<< (std::ostream& o, const Vertex & a)
   {
     o << std::setprecision(5);
-    o << "Vertex ID    "  << a.fID << std::setw(5)
-      << " (x,y,z)  = ("  << a.fXYZ[0] << "," << a.fXYZ[1] << ","
-      << a.fXYZ[2] << ")";
+    o << "Vertex ID    "  << a.id_ << std::setw(5)
+      << " (x,y,z)  = ("  << a.pos_.X() << "," << a.pos_.Y() << ","
+      << a.pos_.Z() << ")";
 
     return o;
   }
