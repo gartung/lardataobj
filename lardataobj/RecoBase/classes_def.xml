@@ -51,6 +51,11 @@
   <version ClassVersion="13" checksum="3306685703"/>
   <version ClassVersion="12" checksum="1302402512"/>
  </class>
+ <class name="recob::Edge"         ClassVersion="20"                       >
+  <version ClassVersion="20" checksum="2649087970"/>
+  <version ClassVersion="19" checksum="4224291429"/>
+     <version ClassVersion="18" checksum="1452403705"/>
+ </class>
  <class name="recob::Hit"              ClassVersion="16"                   >
   <version ClassVersion="16" checksum="3524685965"/>
   <version ClassVersion="15" checksum="3889929631"/>
@@ -108,7 +113,12 @@
   <version ClassVersion="10" checksum="2600776094"/>
  </class>
 
+ <class name="recob::MCSFitResult" ClassVersion="10"                   >
+  <version ClassVersion="10" checksum="1923850317"/>
+ </class>
+
  <!-- art pointers and pointer vectors -->
+ <class name="art::Ptr<recob::Edge>"                            />
  <class name="art::Ptr<recob::Hit>"                             />
  <class name="art::Ptr<recob::Cluster>"                         />
  <class name="art::Ptr<recob::PCAxis>"                          />
@@ -120,7 +130,9 @@
  <class name="art::Ptr<recob::Vertex>"                          />
  <class name="art::Ptr<recob::OpHit>"                           />
  <class name="art::Ptr<recob::OpFlash>"                         />
+ <class name="art::PtrVector<recob::Edge>"                      />
  <class name="art::Ptr<recob::TrackFitHitInfo>"                 />
+ <class name="art::Ptr<recob::MCSFitResult>"                    />
  <class name="art::PtrVector<recob::Hit>"                       />
  <class name="art::PtrVector<recob::Event>"                     />
  <class name="art::PtrVector<recob::Cluster>"                   />
@@ -133,6 +145,7 @@
  <class name="art::PtrVector<recob::OpHit>"                     />
  <class name="art::PtrVector<recob::OpFlash>"                   />
  <class name="art::PtrVector<recob::TrackFitHitInfo>"           />
+ <class name="art::PtrVector<recob::MCSFitResult>"              />
  <class name="std::vector< art::PtrVector<recob::SpacePoint> >" />
  <class name="std::vector< art::PtrVector<recob::Cluster> >"    />
  <class name="std::vector< art::PtrVector<recob::TrackFitHitInfo> >" />
@@ -144,6 +157,8 @@
  <class name="std::pair< art::Ptr<recob::Cluster>,    art::Ptr<recob::Shower>     >" />
  <class name="std::pair< art::Ptr<recob::Cluster>,    art::Ptr<recob::SpacePoint> >" />
  <class name="std::pair< art::Ptr<recob::Cluster>,    art::Ptr<recob::Vertex>     >" />
+ <class name="std::pair< art::Ptr<recob::Edge>,       art::Ptr<recob::PFParticle> >" />
+ <class name="std::pair< art::Ptr<recob::Edge>,       art::Ptr<recob::SpacePoint> >" />
  <class name="std::pair< art::Ptr<recob::EndPoint2D>, art::Ptr<recob::Cluster>    >" />
  <class name="std::pair< art::Ptr<recob::EndPoint2D>, art::Ptr<recob::Hit>        >" />
  <class name="std::pair< art::Ptr<recob::Event>,      art::Ptr<recob::Hit>        >" />
@@ -158,6 +173,7 @@
  <class name="std::pair< art::Ptr<recob::PCAxis>,     art::Ptr<recob::PFParticle> >" />
  <class name="std::pair< art::Ptr<recob::PCAxis>,     art::Ptr<recob::Shower>     >" />
  <class name="std::pair< art::Ptr<recob::PFParticle>, art::Ptr<recob::Cluster>    >" />
+ <class name="std::pair< art::Ptr<recob::PFParticle>, art::Ptr<recob::Edge>       >" />
  <class name="std::pair< art::Ptr<recob::PFParticle>, art::Ptr<recob::PCAxis>     >" />
  <class name="std::pair< art::Ptr<recob::PFParticle>, art::Ptr<recob::Seed>       >" />
  <class name="std::pair< art::Ptr<recob::PFParticle>, art::Ptr<recob::Shower>     >" />
@@ -171,6 +187,7 @@
  <class name="std::pair< art::Ptr<recob::Shower>,     art::Ptr<recob::PFParticle> >" />
  <class name="std::pair< art::Ptr<recob::Shower>,     art::Ptr<recob::SpacePoint> >" />
  <class name="std::pair< art::Ptr<recob::Shower>,     art::Ptr<recob::Vertex>     >" />
+ <class name="std::pair< art::Ptr<recob::SpacePoint>, art::Ptr<recob::Edge>       >" />
  <class name="std::pair< art::Ptr<recob::SpacePoint>, art::Ptr<recob::Hit>        >" />
  <class name="std::pair< art::Ptr<recob::SpacePoint>, art::Ptr<recob::Cluster>    >" />
  <class name="std::pair< art::Ptr<recob::SpacePoint>, art::Ptr<recob::PFParticle> >" />
@@ -192,8 +209,10 @@
  <class name="art::Assns<recob::Cluster,    recob::SpacePoint, void          >" />
  <class name="art::Assns<recob::Cluster,    recob::Vertex,     void          >" />
  <class name="art::Assns<recob::Cluster,    recob::Vertex,     unsigned short>" />
- <class name="art::Assns<recob::EndPoint2D, recob::Hit,        void          >" />
- <class name="art::Assns<recob::EndPoint2D, recob::Cluster,    void          >" />
+ <class name="art::Assns<recob::Edge,       recob::PFParticle, void>"           />
+ <class name="art::Assns<recob::Edge,       recob::SpacePoint, void>"           />
+ <class name="art::Assns<recob::EndPoint2D, recob::Hit,        void>"           />
+ <class name="art::Assns<recob::EndPoint2D, recob::Cluster,    void>"           />
  <class name="art::Assns<recob::EndPoint2D, recob::Cluster,    unsigned short>" />
  <class name="art::Assns<recob::Event,      recob::Hit,        void          >" />
  <class name="art::Assns<recob::Event,      recob::Vertex,     void          >" />
@@ -209,6 +228,7 @@
  <class name="art::Assns<recob::PCAxis,     recob::PFParticle, void          >" />
  <class name="art::Assns<recob::PCAxis,     recob::Shower,     void>"           />
  <class name="art::Assns<recob::PFParticle, recob::Cluster,    void          >" />
+ <class name="art::Assns<recob::PFParticle, recob::Edge,       void          >" />
  <class name="art::Assns<recob::PFParticle, recob::PCAxis,     void          >" />
  <class name="art::Assns<recob::PFParticle, recob::Seed,       void          >" />
  <class name="art::Assns<recob::PFParticle, recob::Shower,     void          >" />
@@ -222,6 +242,7 @@
  <class name="art::Assns<recob::Shower,     recob::PFParticle, void          >" />
  <class name="art::Assns<recob::Shower,     recob::SpacePoint, void          >" />
  <class name="art::Assns<recob::Shower,     recob::Vertex,     void          >" />
+ <class name="art::Assns<recob::SpacePoint, recob::Edge,       void          >" />
  <class name="art::Assns<recob::SpacePoint, recob::Hit,        void          >" />
  <class name="art::Assns<recob::SpacePoint, recob::Cluster,    void          >" />
  <class name="art::Assns<recob::SpacePoint, recob::PFParticle, void          >" />
@@ -245,6 +266,7 @@
  
  <!-- vectors for data products -->
  <class name="std::vector<recob::Cluster>"    />
+ <class name="std::vector<recob::Edge>"       />
  <class name="std::vector<recob::Hit>"        />
  <class name="std::vector<recob::PCAxis>"     />
  <class name="std::vector<recob::PFParticle>" />
@@ -257,11 +279,13 @@
  <class name="std::vector<recob::Event>"      />
  <class name="std::vector<recob::OpHit>"      />
  <class name="std::vector<recob::OpFlash>"    />
+ <class name="std::vector<recob::MCSFitResult>"    />
  <class name="std::vector<recob::TrackFitHitInfo>" />
  <class name="std::vector<std::vector<recob::TrackFitHitInfo> >" />
  
  <!-- art data product wrappers -->
  <class name="art::Wrapper< std::vector< recob::Cluster                     > >" />
+ <class name="art::Wrapper< std::vector< recob::Edge                        > >" />
  <class name="art::Wrapper< std::vector< recob::Hit                         > >" />
  <class name="art::Wrapper< std::vector< recob::PCAxis                      > >" />
  <class name="art::Wrapper< std::vector< recob::PFParticle                  > >" />
@@ -274,6 +298,7 @@
  <class name="art::Wrapper< std::vector< recob::Event                       > >" />
  <class name="art::Wrapper< std::vector< recob::OpHit                       > >" />
  <class name="art::Wrapper< std::vector< recob::OpFlash                     > >" />
+ <class name="art::Wrapper< std::vector< recob::MCSFitResult                > >" />
  <class name="art::Wrapper< std::vector< art::PtrVector<recob::SpacePoint>   > >" />
  <class name="art::Wrapper< std::vector< art::PtrVector<recob::Cluster>      > >" />
  <class name="art::Wrapper< std::vector< std::vector<recob::TrackFitHitInfo> > >" />
@@ -289,7 +314,8 @@
  <class name="art::Wrapper< art::Assns<recob::Cluster,    recob::SpacePoint, void          > >" />
  <class name="art::Wrapper< art::Assns<recob::Cluster,    recob::Vertex,     void          > >" />
  <class name="art::Wrapper< art::Assns<recob::Cluster,    recob::Vertex,     unsigned short> >" />
- <class name="art::Wrapper< art::Assns<recob::EndPoint2D, recob::Hit,        void          > >" />
+ <class name="art::Wrapper< art::Assns<recob::Edge,       recob::PFParticle, void          > >" />
+ <class name="art::Wrapper< art::Assns<recob::Edge,       recob::SpacePoint, void          > >" />
  <class name="art::Wrapper< art::Assns<recob::EndPoint2D, recob::Cluster,    void          > >" />
  <class name="art::Wrapper< art::Assns<recob::EndPoint2D, recob::Cluster,    unsigned short> >" />
  <class name="art::Wrapper< art::Assns<recob::Event,      recob::Hit,        void          > >" />
@@ -306,6 +332,7 @@
  <class name="art::Wrapper< art::Assns<recob::PCAxis,     recob::PFParticle, void          > >" />
  <class name="art::Wrapper< art::Assns<recob::PCAxis,     recob::Shower,     void          > >" />
  <class name="art::Wrapper< art::Assns<recob::PFParticle, recob::Cluster,    void          > >" />
+ <class name="art::Wrapper< art::Assns<recob::PFParticle, recob::Edge,       void          > >" />
  <class name="art::Wrapper< art::Assns<recob::PFParticle, recob::PCAxis,     void          > >" />
  <class name="art::Wrapper< art::Assns<recob::PFParticle, recob::Seed,       void          > >" />
  <class name="art::Wrapper< art::Assns<recob::PFParticle, recob::Shower,     void          > >" />
@@ -319,6 +346,7 @@
  <class name="art::Wrapper< art::Assns<recob::Shower,     recob::PFParticle, void          > >" />
  <class name="art::Wrapper< art::Assns<recob::Shower,     recob::SpacePoint, void          > >" />
  <class name="art::Wrapper< art::Assns<recob::Shower,     recob::Vertex,     void          > >" />
+ <class name="art::Wrapper< art::Assns<recob::SpacePoint, recob::Edge,       void          > >" />
  <class name="art::Wrapper< art::Assns<recob::SpacePoint, recob::Hit,        void          > >" />
  <class name="art::Wrapper< art::Assns<recob::SpacePoint, recob::Cluster,    void          > >" />
  <class name="art::Wrapper< art::Assns<recob::SpacePoint, recob::PFParticle, void          > >" />
@@ -444,6 +472,13 @@
   <class name="art::Wrapper<art::Assns<recob::PFParticle, recob::Trajectory, void>>" />
   <class name="std::pair<art::Ptr<recob::Trajectory>, art::Ptr<recob::PFParticle>>" />
   <class name="art::Wrapper<art::Assns<recob::Trajectory, recob::PFParticle, void>>" />
+      <!-- multiple coulomb scattering -->
+  <class name="art::Assns<recob::MCSFitResult, recob::Trajectory, void>" />
+  <class name="art::Assns<recob::Trajectory, recob::MCSFitResult, void>" />
+  <class name="std::pair<art::Ptr<recob::MCSFitResult>, art::Ptr<recob::Trajectory>>" />
+  <class name="art::Wrapper<art::Assns<recob::MCSFitResult, recob::Trajectory, void>>" />
+  <class name="std::pair<art::Ptr<recob::Trajectory>, art::Ptr<recob::MCSFitResult>>" />
+  <class name="art::Wrapper<art::Assns<recob::Trajectory, recob::MCSFitResult, void>>" />
   
   
   

@@ -12,6 +12,7 @@
 #include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
 #include "lardataobj/RawData/RawDigit.h"
 #include "lardataobj/RecoBase/Cluster.h"
+#include "lardataobj/RecoBase/Edge.h"
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/Shower.h"
 #include "lardataobj/RecoBase/Seed.h"
@@ -32,3 +33,5 @@
 #include "lardataobj/RecoBase/Track.h"
 
 #include "lardataobj/RecoBase/TrackFitHitInfo.h"
+
+#include "lardataobj/RecoBase/MCSFitResult.h"
