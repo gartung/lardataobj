@@ -68,7 +68,7 @@ namespace anab{
 			 double MissingEavg,
 			 double PIDA,
 			 geo::PlaneID planeID,
-			 std::vector<ParticleIDAlgScores> fParticleIDAlgScores)
+			 std::vector<sParticleIDAlgScores> fParticleIDAlgScores)
     : fPdg(Pdg)
     , fNdf(Ndf)
     , fMinChi2(MinChi2)
@@ -83,6 +83,12 @@ namespace anab{
     , fParticleIDAlgScores(fParticleIDAlgScores)
   {
     fPlaneID = planeID;
+  }
+
+  //----------------------------------------------------------------------
+  ParticleID::ParticleID(std::vector<sParticleIDAlgScores> fParticleIDAlgScores)
+    : fParticleIDAlgScores(fParticleIDAlgScores)
+  {
   }
 
   //----------------------------------------------------------------------
@@ -102,13 +108,13 @@ namespace anab{
       << "\n planeID=(" << a.fPlaneID.Cryostat << "," << a.fPlaneID.TPC << "," << a.fPlaneID.Plane << ")";
 
     for (size_t i=0; i < a.fParticleIDAlgScores.size(); i++){
-      o << "\n ParticleIDAlg " << a.fParticleIDAlgScores.fAlgName
-	<< "\n -- Variable type: " << a.fParticleIDAlgScores.fVariableType
-	<< "\n -- Assuming PDG: " << a.fParticleIDAlgScores.fAssumedPdg
-	<< "\n -- Value: " << a.fParticleIDAlgScores.fValue
-	<< "\n -- Using planeID: (" << a.fParticleIDAlgScores.fPlaneID.Cryostat << "," << a.fParticleIDAlgScores.fPlaneID.TPC << "," << a.fParticleIDAlgScores.fPlaneID.Plane << ")";
+      o << "\n ParticleIDAlg " << a.fParticleIDAlgScores.at(i).fAlgName
+	<< "\n -- Variable type: " << a.fParticleIDAlgScores.at(i).fVariableType
+	<< "\n -- Assuming PDG: " << a.fParticleIDAlgScores.at(i).fAssumedPdg
+	<< "\n -- Value: " << a.fParticleIDAlgScores.at(i).fValue
+	<< "\n -- Using planeID: (" << a.fParticleIDAlgScores.at(i).fPlaneID.Cryostat << "," << a.fParticleIDAlgScores.at(i).fPlaneID.TPC << "," << a.fParticleIDAlgScores.at(i).fPlaneID.Plane << ")";
     }
-      <<std::endl;
+    o <<std::endl;
     
 
     return o;

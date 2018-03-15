@@ -14,11 +14,11 @@
 #include <iostream>
 #include <iomanip>
 #include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
-#include "lardataobj/AnalysisBase/ParticleID.h"
+#include "lardataobj/AnalysisBase/ParticleID_VariableTypeEnums.h"
 
 namespace anab {
 
-struct ParticleIDAlgScores {
+struct sParticleIDAlgScores {
   std::string fAlgName;
   kVariableType fVariableType;
   int fAssumedPdg;
@@ -43,7 +43,7 @@ struct ParticleIDAlgScores {
     double fMissingEavg;     ///< missing energy from dead wires using average dEdx
     double fPIDA;            ///< PID developed by Bruce Baller
     geo::PlaneID fPlaneID;
-    std::vector<ParticleIDAlgScores> fParticleIDAlgScores; ///< Vector of structs to hold outputs from generic PID algorithms
+    std::vector<sParticleIDAlgScores> fParticleIDAlgScores; ///< Vector of structs to hold outputs from generic PID algorithms
 
 #ifndef __GCCXML__
   public:
@@ -59,8 +59,23 @@ struct ParticleIDAlgScores {
 	       double MissingE,
 	       double MissingEavg,
 	       double PIDA,
+	       geo::PlaneID planeID);
+      
+    ParticleID(int Pdg,
+	       int Ndf,
+	       double MinChi2,
+	       double DeltaChi2,
+	       double Chi2Proton,
+	       double Chi2Kaon,
+	       double Chi2Pion,
+	       double Chi2Muon,
+	       double MissingE,
+	       double MissingEavg,
+	       double PIDA,
 	       geo::PlaneID planeID,
-	       std::vector<ParticleIDAlgScores> fParticleIDAlgScores);
+	       std::vector<sParticleIDAlgScores> fParticleIDAlgScores);
+
+    ParticleID(std::vector<sParticleIDAlgScores> fParticleIDAlgScores);
 
     friend std::ostream& operator << (std::ostream &o, ParticleID const& a);
 
@@ -76,7 +91,7 @@ struct ParticleIDAlgScores {
     const double& MissingEavg() const;
     const double& PIDA()        const;
     const geo::PlaneID& PlaneID() const;
-    const std::vector<ParticleIDAlgScores> ParticleIDAlgScores() const;
+    const std::vector<sParticleIDAlgScores> ParticleIDAlgScores() const;
 #endif
   };
 
@@ -96,7 +111,7 @@ inline const double& anab::ParticleID::MissingE()    const { return fMissingE;  
 inline const double& anab::ParticleID::MissingEavg() const { return fMissingEavg; }
 inline const double& anab::ParticleID::PIDA()        const { return fPIDA; }
 inline const geo::PlaneID& anab::ParticleID::PlaneID() const { return fPlaneID; }
-inline const std::vector<ParticleIDAlgScores> anab::ParticleID::ParticleIDAlgScores() const { return fParticleIDAlgScores; }
+inline const std::vector<anab::sParticleIDAlgScores> anab::ParticleID::ParticleIDAlgScores() const { return fParticleIDAlgScores; }
 #endif
 
 #endif //ANAB_PARTICLEID_H
