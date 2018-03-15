@@ -14,8 +14,17 @@
 #include <iostream>
 #include <iomanip>
 #include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
+#include "lardataobj/AnalysisBase/ParticleID.h"
 
 namespace anab {
+
+struct ParticleIDAlgScores {
+  std::string fAlgName;
+  kVariableType fVariableType;
+  int fAssumedPdg;
+  float fValue;
+  geo::PlaneID fPlaneID;
+  };
 
   class ParticleID{
   public:
@@ -34,6 +43,7 @@ namespace anab {
     double fMissingEavg;     ///< missing energy from dead wires using average dEdx
     double fPIDA;            ///< PID developed by Bruce Baller
     geo::PlaneID fPlaneID;
+    std::vector<ParticleIDAlgScores> fParticleIDAlgScores; ///< Vector of structs to hold outputs from generic PID algorithms
 
 #ifndef __GCCXML__
   public:
@@ -49,7 +59,8 @@ namespace anab {
 	       double MissingE,
 	       double MissingEavg,
 	       double PIDA,
-	       geo::PlaneID planeID);
+	       geo::PlaneID planeID,
+	       std::vector<ParticleIDAlgScores> fParticleIDAlgScores);
 
     friend std::ostream& operator << (std::ostream &o, ParticleID const& a);
 
@@ -65,6 +76,7 @@ namespace anab {
     const double& MissingEavg() const;
     const double& PIDA()        const;
     const geo::PlaneID& PlaneID() const;
+    const std::vector<ParticleIDAlgScores> ParticleIDAlgScores() const;
 #endif
   };
 
@@ -84,6 +96,7 @@ inline const double& anab::ParticleID::MissingE()    const { return fMissingE;  
 inline const double& anab::ParticleID::MissingEavg() const { return fMissingEavg; }
 inline const double& anab::ParticleID::PIDA()        const { return fPIDA; }
 inline const geo::PlaneID& anab::ParticleID::PlaneID() const { return fPlaneID; }
+inline const std::vector<ParticleIDAlgScores> anab::ParticleID::ParticleIDAlgScores() const { return fParticleIDAlgScores; }
 #endif
 
 #endif //ANAB_PARTICLEID_H

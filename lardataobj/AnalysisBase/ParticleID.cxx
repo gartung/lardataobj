@@ -56,6 +56,36 @@ namespace anab{
   }
 
   //----------------------------------------------------------------------
+  ParticleID::ParticleID(int Pdg,
+			 int Ndf,
+			 double MinChi2,
+			 double DeltaChi2,
+			 double Chi2Proton,
+			 double Chi2Kaon,
+			 double Chi2Pion,
+			 double Chi2Muon,
+			 double MissingE,
+			 double MissingEavg,
+			 double PIDA,
+			 geo::PlaneID planeID,
+			 std::vector<ParticleIDAlgScores> fParticleIDAlgScores)
+    : fPdg(Pdg)
+    , fNdf(Ndf)
+    , fMinChi2(MinChi2)
+    , fDeltaChi2(DeltaChi2)
+    , fChi2Proton(Chi2Proton)
+    , fChi2Kaon(Chi2Kaon)
+    , fChi2Pion(Chi2Pion)
+    , fChi2Muon(Chi2Muon)
+    , fMissingE(MissingE)
+    , fMissingEavg(MissingEavg)
+    , fPIDA(PIDA)
+    , fParticleIDAlgScores(fParticleIDAlgScores)
+  {
+    fPlaneID = planeID;
+  }
+
+  //----------------------------------------------------------------------
   // ostream operator.  
   //
   std::ostream& operator<< (std::ostream & o, ParticleID const& a)
@@ -69,7 +99,15 @@ namespace anab{
       << "\n chi2 with pion template: "   << a.fChi2Pion
       << "\n chi2 with muon template: "   << a.fChi2Muon
       << "\n PIDA:                    "   << a.fPIDA
-      << "\n planeID=(" << a.fPlaneID.Cryostat << "," << a.fPlaneID.TPC << "," << a.fPlaneID.Plane << ")"
+      << "\n planeID=(" << a.fPlaneID.Cryostat << "," << a.fPlaneID.TPC << "," << a.fPlaneID.Plane << ")";
+
+    for (size_t i=0; i < a.fParticleIDAlgScores.size(); i++){
+      o << "\n ParticleIDAlg " << a.fParticleIDAlgScores.fAlgName
+	<< "\n -- Variable type: " << a.fParticleIDAlgScores.fVariableType
+	<< "\n -- Assuming PDG: " << a.fParticleIDAlgScores.fAssumedPdg
+	<< "\n -- Value: " << a.fParticleIDAlgScores.fValue
+	<< "\n -- Using planeID: (" << a.fParticleIDAlgScores.fPlaneID.Cryostat << "," << a.fParticleIDAlgScores.fPlaneID.TPC << "," << a.fParticleIDAlgScores.fPlaneID.Plane << ")";
+    }
       <<std::endl;
     
 
