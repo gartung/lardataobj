@@ -10,7 +10,8 @@ namespace anab{
     kPIDA,
     kdEdxtruncmean,
     kdQdxtruncmean,
-    kTrackLength
+    kTrackLength,
+    kNotSet
   };
 
 }

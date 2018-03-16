@@ -24,7 +24,15 @@ struct sParticleIDAlgScores {
   int fAssumedPdg;
   float fValue;
   geo::PlaneID fPlaneID;
-  };
+
+  sParticleIDAlgScores(){
+  fAlgName = "AlgNameNotSet";
+  fVariableType = kNotSet;
+  fAssumedPdg = 0;
+  fValue = -9999.;
+  fPlaneID = geo::PlaneID(0,0,0);
+  }
+};
 
   class ParticleID{
   public:
@@ -73,9 +81,10 @@ struct sParticleIDAlgScores {
 	       double MissingEavg,
 	       double PIDA,
 	       geo::PlaneID planeID,
-	       std::vector<sParticleIDAlgScores> fParticleIDAlgScores);
+	       std::vector<sParticleIDAlgScores> ParticleIDAlgScores);
 
-    ParticleID(std::vector<sParticleIDAlgScores> fParticleIDAlgScores);
+    ParticleID(std::vector<anab::sParticleIDAlgScores> &ParticleIDAlgScores);
+    
 
     friend std::ostream& operator << (std::ostream &o, ParticleID const& a);
 
@@ -91,7 +100,7 @@ struct sParticleIDAlgScores {
     const double& MissingEavg() const;
     const double& PIDA()        const;
     const geo::PlaneID& PlaneID() const;
-    const std::vector<sParticleIDAlgScores> ParticleIDAlgScores() const;
+    const std::vector<anab::sParticleIDAlgScores> ParticleIDAlgScores() const;
 #endif
   };
 

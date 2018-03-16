@@ -86,9 +86,20 @@ namespace anab{
   }
 
   //----------------------------------------------------------------------
-  ParticleID::ParticleID(std::vector<sParticleIDAlgScores> fParticleIDAlgScores)
-    : fParticleIDAlgScores(fParticleIDAlgScores)
+  ParticleID::ParticleID(std::vector<anab::sParticleIDAlgScores> &ParticleIDAlgScores)
   {
+    fPdg = 0;
+    fNdf = 0;
+    fMinChi2 = 0.;
+    fDeltaChi2 = 0.;
+    fChi2Proton = 0.;
+    fChi2Kaon = 0.;
+    fChi2Pion = 0.;
+    fChi2Muon = 0.;
+    fMissingE = 0.;
+    fMissingEavg = 0.;
+    fPIDA = 0.;
+    fParticleIDAlgScores = ParticleIDAlgScores;
   }
 
   //----------------------------------------------------------------------
