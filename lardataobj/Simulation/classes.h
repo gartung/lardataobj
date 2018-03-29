@@ -19,3 +19,4 @@
 #include "lardataobj/Simulation/BeamGateInfo.h"
 #include "lardataobj/Simulation/AuxDetSimChannel.h"
 #include "lardataobj/Simulation/SupernovaTruth.h"
+#include "lardataobj/Simulation/EnergyDeposition.h"
