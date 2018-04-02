@@ -81,7 +81,7 @@ struct sParticleIDAlgScores {
 	       double MissingEavg,
 	       double PIDA,
 	       geo::PlaneID planeID,
-	       std::vector<sParticleIDAlgScores> ParticleIDAlgScores);
+	       std::vector<sParticleIDAlgScores> &ParticleIDAlgScores);
 
     ParticleID(std::vector<anab::sParticleIDAlgScores> &ParticleIDAlgScores);
     
@@ -101,6 +101,7 @@ struct sParticleIDAlgScores {
     const double& PIDA()        const;
     const geo::PlaneID& PlaneID() const;
     const std::vector<anab::sParticleIDAlgScores> ParticleIDAlgScores() const;
+ 
 #endif
   };
 

@@ -68,7 +68,7 @@ namespace anab{
 			 double MissingEavg,
 			 double PIDA,
 			 geo::PlaneID planeID,
-			 std::vector<sParticleIDAlgScores> fParticleIDAlgScores)
+			 std::vector<sParticleIDAlgScores> &ParticleIDAlgScores)
     : fPdg(Pdg)
     , fNdf(Ndf)
     , fMinChi2(MinChi2)
@@ -80,8 +80,8 @@ namespace anab{
     , fMissingE(MissingE)
     , fMissingEavg(MissingEavg)
     , fPIDA(PIDA)
-    , fParticleIDAlgScores(fParticleIDAlgScores)
   {
+    fParticleIDAlgScores = ParticleIDAlgScores;
     fPlaneID = planeID;
   }
 
