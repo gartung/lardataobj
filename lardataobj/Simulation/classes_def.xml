@@ -77,6 +77,7 @@
  <class name="std::vector<sim::SDP>" />
  <class name="std::pair< double, std::vector<sim::SDP> >"/>
  <class name="std::vector< std::pair < double, std::vector<sim::SDP> > >" />
+ <class name="art::Wrapper< std::vector<sim::SimEnergyDeposit>   >"		   />
  <class name="art::Wrapper< std::vector<sim::SimPhotons>   >"		   />
  <class name="art::Wrapper< std::vector<sim::SimPhotonsLite>   >"  />
  <class name="art::Wrapper< std::vector<sim::SimChannel>   >"		   />
