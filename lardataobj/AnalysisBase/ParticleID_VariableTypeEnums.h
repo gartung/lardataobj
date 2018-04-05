@@ -1,3 +1,5 @@
+#ifndef PARTICLEID_VARIABLETYPEENUMS_H 
+#define PARTICLEID_VARIABLETYPEENUMS_H 
 
 namespace anab{
 
@@ -15,3 +17,5 @@ namespace anab{
   };
 
 }
+
+#endif
