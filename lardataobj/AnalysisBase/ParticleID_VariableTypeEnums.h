@@ -13,6 +13,8 @@ namespace anab{
     kdEdxtruncmean,
     kdQdxtruncmean,
     kTrackLength,
+    kEdeposited,
+    kEbyRange,
     kNotSet
   };
 
