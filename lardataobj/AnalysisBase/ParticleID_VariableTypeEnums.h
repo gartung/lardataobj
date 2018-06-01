@@ -5,6 +5,9 @@ namespace anab{
 
   enum kVariableType{
     kGOF,
+    kLikelihood,
+    kLikelihood_fwd,
+    kLikelihood_bwd,
     kLogL,
     kLogL_fwd,
     kLogL_bwd,
