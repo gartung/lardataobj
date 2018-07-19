@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-// \version 
+// \version
 //
 // \brief Definition of data product to hold ParticleID information
 //
@@ -13,6 +13,7 @@
 #include <iosfwd>
 #include <iostream>
 #include <iomanip>
+#include <bitset>
 #include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
 #include "lardataobj/AnalysisBase/ParticleID_VariableTypeEnums.h"
 
@@ -21,22 +22,26 @@ namespace anab {
 struct sParticleIDAlgScores {
   std::string fAlgName;
   kVariableType fVariableType;
+  kTrackDir fTrackDir;
+  int fNdf;
   int fAssumedPdg;
   float fValue;
-  geo::PlaneID fPlaneID;
+  std::bitset<5> fPlaneID;
 
   sParticleIDAlgScores(){
   fAlgName = "AlgNameNotSet";
   fVariableType = kNotSet;
+  fTrackDir = kNoDirection;
   fAssumedPdg = 0;
+  fNdf = -9999;
   fValue = -9999.;
-  fPlaneID = geo::PlaneID(0,0,0);
+  // fPlaneID will use default constructor: sets all values to 0
   }
 };
 
   class ParticleID{
   public:
-    
+
     ParticleID();
 
     int    fPdg;             ///< determined particle ID
@@ -68,27 +73,13 @@ struct sParticleIDAlgScores {
 	       double MissingEavg,
 	       double PIDA,
 	       geo::PlaneID planeID);
-      
-    ParticleID(int Pdg,
-	       int Ndf,
-	       double MinChi2,
-	       double DeltaChi2,
-	       double Chi2Proton,
-	       double Chi2Kaon,
-	       double Chi2Pion,
-	       double Chi2Muon,
-	       double MissingE,
-	       double MissingEavg,
-	       double PIDA,
-	       geo::PlaneID planeID,
-	       std::vector<sParticleIDAlgScores> &ParticleIDAlgScores);
 
     ParticleID(std::vector<anab::sParticleIDAlgScores> &ParticleIDAlgScores);
-    
+
 
     friend std::ostream& operator << (std::ostream &o, ParticleID const& a);
 
-    const int&    Pdg()         const; 
+    const int&    Pdg()         const;
     const int&    Ndf()         const;
     const double& MinChi2()     const;
     const double& DeltaChi2()   const;
@@ -101,7 +92,7 @@ struct sParticleIDAlgScores {
     const double& PIDA()        const;
     const geo::PlaneID& PlaneID() const;
     const std::vector<anab::sParticleIDAlgScores> ParticleIDAlgScores() const;
- 
+
 #endif
   };
 
@@ -109,7 +100,7 @@ struct sParticleIDAlgScores {
 
 #ifndef __GCCXML__
 
-inline const int&    anab::ParticleID::Pdg()         const { return fPdg;         } 
+inline const int&    anab::ParticleID::Pdg()         const { return fPdg;         }
 inline const int&    anab::ParticleID::Ndf()         const { return fNdf;         }
 inline const double& anab::ParticleID::MinChi2()     const { return fMinChi2;     }
 inline const double& anab::ParticleID::DeltaChi2()   const { return fDeltaChi2;   }

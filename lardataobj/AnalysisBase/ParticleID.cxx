@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////
-// \version $Id: 
+// \version $Id:
 //
 // \brief Definition of ParticleID analysis object
 //
@@ -12,7 +12,7 @@
 namespace anab{
 
   //----------------------------------------------------------------------
-  ParticleID::ParticleID() 
+  ParticleID::ParticleID()
     : fPdg(0)
     , fNdf(0)
     , fMinChi2(0.)
@@ -56,36 +56,6 @@ namespace anab{
   }
 
   //----------------------------------------------------------------------
-  ParticleID::ParticleID(int Pdg,
-			 int Ndf,
-			 double MinChi2,
-			 double DeltaChi2,
-			 double Chi2Proton,
-			 double Chi2Kaon,
-			 double Chi2Pion,
-			 double Chi2Muon,
-			 double MissingE,
-			 double MissingEavg,
-			 double PIDA,
-			 geo::PlaneID planeID,
-			 std::vector<sParticleIDAlgScores> &ParticleIDAlgScores)
-    : fPdg(Pdg)
-    , fNdf(Ndf)
-    , fMinChi2(MinChi2)
-    , fDeltaChi2(DeltaChi2)
-    , fChi2Proton(Chi2Proton)
-    , fChi2Kaon(Chi2Kaon)
-    , fChi2Pion(Chi2Pion)
-    , fChi2Muon(Chi2Muon)
-    , fMissingE(MissingE)
-    , fMissingEavg(MissingEavg)
-    , fPIDA(PIDA)
-  {
-    fParticleIDAlgScores = ParticleIDAlgScores;
-    fPlaneID = planeID;
-  }
-
-  //----------------------------------------------------------------------
   ParticleID::ParticleID(std::vector<anab::sParticleIDAlgScores> &ParticleIDAlgScores)
   {
     fPdg = 0;
@@ -103,12 +73,12 @@ namespace anab{
   }
 
   //----------------------------------------------------------------------
-  // ostream operator.  
+  // ostream operator.
   //
   std::ostream& operator<< (std::ostream & o, ParticleID const& a)
   {
-    o << "Determined particle PDG code: " << a.fPdg 
-      << "\n NDF: "                       << a.fNdf 
+    o << "Determined particle PDG code: " << a.fPdg
+      << "\n NDF: "                       << a.fNdf
       << "\n Minimal chi2: "              << a.fMinChi2
       << "\n Delta chi2: "                << a.fDeltaChi2
       << "\n chi2 with proton template: " << a.fChi2Proton
@@ -121,14 +91,16 @@ namespace anab{
     for (size_t i=0; i < a.fParticleIDAlgScores.size(); i++){
       o << "\n ParticleIDAlg " << a.fParticleIDAlgScores.at(i).fAlgName
 	<< "\n -- Variable type: " << a.fParticleIDAlgScores.at(i).fVariableType
+  << "\n -- Track direction: " << a.fParticleIDAlgScores.at(i).fTrackDir
 	<< "\n -- Assuming PDG: " << a.fParticleIDAlgScores.at(i).fAssumedPdg
+  << "\n -- Number of degrees of freedom: " << a.fParticleIDAlgScores.at(i).fNdf
 	<< "\n -- Value: " << a.fParticleIDAlgScores.at(i).fValue
-	<< "\n -- Using planeID: (" << a.fParticleIDAlgScores.at(i).fPlaneID.Cryostat << "," << a.fParticleIDAlgScores.at(i).fPlaneID.TPC << "," << a.fParticleIDAlgScores.at(i).fPlaneID.Plane << ")";
+	<< "\n -- Using planeID: " << a.fParticleIDAlgScores.at(i).fPlaneID;
     }
     o <<std::endl;
-    
+
 
     return o;
   }
-  
+
 }
