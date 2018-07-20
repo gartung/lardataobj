@@ -12,6 +12,8 @@
 <!-- support classes (e.g., elements of data product classes) -->
  <class name="std::map<std::basic_string<char>,double > " />
  <class name="std::vector<std::map<std::basic_string<char>,double > >" />
+ <class name="_Base_bitset<1>" />
+ <class name="bitset<5>" />
 
 <!-- Feature vectors, length 1-5                                        -->
  <class name="anab::FeatureVector<1>" ClassVersion="10"               >
@@ -53,7 +55,7 @@
  <class name="std::vector< anab::FeatureVector<5> >"                  />
  <class name="art::Ptr< anab::FeatureVector<5> >"                     />
  <class name="art::Wrapper< std::vector< anab::FeatureVector<5> > >"  />
- 
+
  <!-- MVA output metadata, length 1-5                                -->
  <class name="anab::MVADescription<1>" ClassVersion="10"              >
   <version ClassVersion="10" checksum="835494112"/>
@@ -110,7 +112,8 @@
   <version ClassVersion="13" checksum="3664244500"/>
   <version ClassVersion="12" checksum="1769449101"/>
  </class>
- <class name="anab::sParticleIDAlgScores"      ClassVersion="10"                 >
+ <class name="anab::sParticleIDAlgScores"      ClassVersion="11"                 >
+  <version ClassVersion="11" checksum="3455956848"/>
   <version ClassVersion="10" checksum="646537151"/>
  </class>
  <class name="anab::MVAPIDResult"/>
@@ -159,30 +162,30 @@
  <class name="std::pair< art::Ptr<recob::Track>,      art::Ptr<anab::Calorimetry> >"   />
  <class name="std::pair< art::Ptr<anab::Calorimetry>, art::Ptr<recob::Track>      >"   />
  <class name="std::pair< art::Ptr<recob::Shower>,      art::Ptr<anab::Calorimetry> >"   />
- <class name="std::pair< art::Ptr<anab::Calorimetry>, art::Ptr<recob::Shower>      >"   /> 
+ <class name="std::pair< art::Ptr<anab::Calorimetry>, art::Ptr<recob::Shower>      >"   />
  <class name="std::pair< art::Ptr<recob::Track>,      art::Ptr<anab::ParticleID> >"    />
  <class name="std::pair< art::Ptr<anab::ParticleID>, art::Ptr<recob::Track>      >"    />
- <class name="std::pair< art::Ptr<recob::Track>,     art::Ptr<anab::MVAPIDResult>   >" /> 
- <class name="std::pair< art::Ptr<recob::Shower>,     art::Ptr<anab::MVAPIDResult>   >" /> 
- <class name="std::pair< art::Ptr<anab::FlashMatch>, art::Ptr<recob::Track>      >"    />  
- <class name="std::pair< art::Ptr<anab::FlashMatch>, art::Ptr<recob::OpFlash>      >"    />  
- <class name="std::pair< art::Ptr<recob::OpFlash>, art::Ptr<anab::FlashMatch>      >"    />  
- <class name="std::pair< art::Ptr<recob::Track>, art::Ptr<anab::FlashMatch>      >"    /> 
+ <class name="std::pair< art::Ptr<recob::Track>,     art::Ptr<anab::MVAPIDResult>   >" />
+ <class name="std::pair< art::Ptr<recob::Shower>,     art::Ptr<anab::MVAPIDResult>   >" />
+ <class name="std::pair< art::Ptr<anab::FlashMatch>, art::Ptr<recob::Track>      >"    />
+ <class name="std::pair< art::Ptr<anab::FlashMatch>, art::Ptr<recob::OpFlash>      >"    />
+ <class name="std::pair< art::Ptr<recob::OpFlash>, art::Ptr<anab::FlashMatch>      >"    />
+ <class name="std::pair< art::Ptr<recob::Track>, art::Ptr<anab::FlashMatch>      >"    />
  <class name="std::pair< art::Ptr<recob::PFParticle>, art::Ptr<anab::CosmicTag>  >"    />
  <class name="std::pair< art::Ptr<recob::Track>,      art::Ptr<anab::CosmicTag>  >"    />
  <class name="std::pair< art::Ptr<recob::PCAxis>,     art::Ptr<anab::CosmicTag>  >"    />
  <class name="std::pair< art::Ptr<recob::Cluster>,    art::Ptr<anab::CosmicTag>  >"    />
- <class name="std::pair< art::Ptr<recob::Hit>,        art::Ptr<anab::CosmicTag>  >"    />    
+ <class name="std::pair< art::Ptr<recob::Hit>,        art::Ptr<anab::CosmicTag>  >"    />
  <class name="std::pair< art::Ptr<anab::CosmicTag>, art::Ptr<recob::PFParticle>    >"    />
  <class name="std::pair< art::Ptr<anab::CosmicTag>, art::Ptr<recob::Track>    >"    />
  <class name="std::pair< art::Ptr<anab::CosmicTag>, art::Ptr<recob::PCAxis>    >"    />
  <class name="std::pair< art::Ptr<anab::CosmicTag>, art::Ptr<recob::Cluster>  >"    />
- <class name="std::pair< art::Ptr<anab::CosmicTag>, art::Ptr<recob::Hit>      >"    />     
- <class name="std::pair< art::Ptr<anab::CosmicTag>,  art::Ptr<anab::FlashMatch> >"    />    
- <class name="std::pair< art::Ptr<anab::FlashMatch>, art::Ptr<anab::CosmicTag>  >"    />    
- <class name="std::pair< art::Ptr<recob::Cluster>,   art::Ptr<anab::FlashMatch> >"    />    
- <class name="std::pair< art::Ptr<anab::FlashMatch>, art::Ptr<recob::Cluster>   >"    />    
- <class name="std::pair< art::Ptr<recob::Track>, art::Ptr<simb::MCParticle> >"    /> 
+ <class name="std::pair< art::Ptr<anab::CosmicTag>, art::Ptr<recob::Hit>      >"    />
+ <class name="std::pair< art::Ptr<anab::CosmicTag>,  art::Ptr<anab::FlashMatch> >"    />
+ <class name="std::pair< art::Ptr<anab::FlashMatch>, art::Ptr<anab::CosmicTag>  >"    />
+ <class name="std::pair< art::Ptr<recob::Cluster>,   art::Ptr<anab::FlashMatch> >"    />
+ <class name="std::pair< art::Ptr<anab::FlashMatch>, art::Ptr<recob::Cluster>   >"    />
+ <class name="std::pair< art::Ptr<recob::Track>, art::Ptr<simb::MCParticle> >"    />
  <class name="art::Assns<recob::Track,      anab::Calorimetry,  void>"	               />
  <class name="art::Assns<anab::Calorimetry, recob::Track,       void>"	               />
  <class name="art::Assns<recob::Shower,      anab::Calorimetry,  void>"	               />
