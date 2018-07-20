@@ -19,14 +19,14 @@
 
 namespace anab {
 
-struct sParticleIDAlgScores {
-  std::string fAlgName;
-  kVariableType fVariableType;
-  kTrackDir fTrackDir;
-  int fNdf;
-  int fAssumedPdg;
-  float fValue;
-  std::bitset<5> fPlaneID;
+struct sParticleIDAlgScores { ///< determined particle ID
+  std::string fAlgName; ///< Algorithm name (to be defined by experiment). Set to "AlgNameNotSet" by default.
+  kVariableType fVariableType; ///< Variable type enum: defined in ParticleID_VariableTypeEnums.h. Set to kNotSet by default.
+  kTrackDir fTrackDir; ///< Track direction enum: defined in ParticleID_VariableTypeEnums.h. Set to kNoDirection by default.
+  int fNdf; ///< Number of degrees of freedom used by algorithm, if applicable. Set to -9999 by default.
+  int fAssumedPdg; ///< PDG of particle hypothesis assumed by algorithm, if applicable. Set to 0 by default.
+  float fValue; ///< Result of Particle ID algorithm/test
+  std::bitset<5> fPlaneID; ///< Bitset for PlaneID used by algorithm, allowing for multiple planes and up to 5 total planes. Set to "00000" by default. Convention for bitset and helper functions defined in PlaneIDBitsetHelperFunctions.h
 
   sParticleIDAlgScores(){
   fAlgName = "AlgNameNotSet";
