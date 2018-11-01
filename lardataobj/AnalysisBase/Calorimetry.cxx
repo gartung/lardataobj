@@ -40,8 +40,9 @@ namespace anab{
     fRange = Range;
     for(size_t i=0; i!=dQdx.size(); ++i){
       fTrkPitch.push_back(TrkPitch);
-      TVector3 v(-999,-999,-999);
-      fXYZ.push_back(v);
+      // TVector3 v(-999,-999,-999);
+      // fXYZ.push_back(v);
+      fXYZ.push_back({-999,-999,-999});
     }
     if(dEdx.size() != resRange.size())
       throw cet::exception("anab::Calorimetry") << "dE/dx and residual range vectors "
@@ -83,8 +84,9 @@ namespace anab{
       throw cet::exception("anab::Calorimetry") << "dE/dx and residual range vectors "
 						<< "have different sizes, this is a problem.\n";
     for(size_t i=0; i!=dQdx.size(); ++i){
-      TVector3 v(-999,-999,-999);
-      fXYZ.push_back(v);
+      // TVector3 v(-999,-999,-999);
+      // fXYZ.push_back(v);
+      fXYZ.push_back({-999,-999,-999});
     }
     fdEdx.resize(dEdx.size());
     fdQdx.resize(dQdx.size());
@@ -113,7 +115,22 @@ namespace anab{
 			   std::vector<TVector3> const& XYZ,
 			   geo::PlaneID planeID) 
   {
-    
+    std::vector<anab::Point_t> vec;
+    for (auto& iv : XYZ) vec.push_back(anab::Point_t(iv.X(),iv.Y(),iv.Z()));
+    Calorimetry(KineticEnergy,dEdx,dQdx,resRange,deadwire,Range,TrkPitch,vec,planeID);
+  }
+  //----------------------------------------------------------------------
+  Calorimetry::Calorimetry(double KineticEnergy,
+                          std::vector<double> const& dEdx,
+                          std::vector<double> const& dQdx,
+                          std::vector<double> const& resRange,
+                          std::vector<double> const& deadwire,
+                          double Range,
+                          std::vector<double> const& TrkPitch,
+                          std::vector<anab::Point_t> const& XYZ,
+                          geo::PlaneID planeID)
+  { 
+   
     fPlaneID = planeID;
     fKineticEnergy = KineticEnergy;
     fRange = Range;
@@ -122,7 +139,8 @@ namespace anab{
       throw cet::exception("anab::Calorimetry") << "dE/dx and residual range vectors "
 						<< "have different sizes, this is a problem.\n";
     for(size_t i=0; i!=dQdx.size(); ++i){
-      fXYZ.push_back(TVector3(-999,-999,-999));
+      //fXYZ.push_back(TVector3(-999,-999,-999));
+      fXYZ.push_back({-999,-999,-999});
     }
     fdEdx.resize(dEdx.size());
     fdQdx.resize(dQdx.size());

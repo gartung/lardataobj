@@ -17,10 +17,12 @@ namespace recob {
     using Coord_t = double;
     
     /// Type for representation of position in physical 3D space.
-    using Point_t = geo::Point_t;
+    //using Point_t = geo::Point_t;
+    using Point_t = ROOT::Math::PositionVector3D<ROOT::Math::Cartesian3D<float>, ROOT::Math::GlobalCoordinateSystemTag>;
     
     /// Type for representation of momenta in 3D space.
-    using Vector_t = geo::Vector_t;
+    //using Vector_t = geo::Vector_t;
+    using Vector_t = ROOT::Math::DisplacementVector3D <ROOT::Math::Cartesian3D<float>, ROOT::Math::GlobalCoordinateSystemTag>;
     
     /// Type of trajectory point list.
     using Positions_t = std::vector<Point_t>;

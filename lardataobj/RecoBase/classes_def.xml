@@ -20,6 +20,11 @@
    <!-- others -->
  <class name="std::vector<TVector3>"                                      />
  <class name="std::vector<TMatrixT<double> >"                             />
+ <class name="ROOT::Math::PositionVector3D<ROOT::Math::Cartesian3D<float>,ROOT::Math::GlobalCoordinateSystemTag>"/>
+ <class name="vector<ROOT::Math::PositionVector3D<ROOT::Math::Cartesian3D<float>,ROOT::Math::GlobalCoordinateSystemTag> >"/>
+ <class name="ROOT::Math::DisplacementVector3D<ROOT::Math::Cartesian3D<float>,ROOT::Math::GlobalCoordinateSystemTag>"/>
+ <class name="vector<ROOT::Math::DisplacementVector3D<ROOT::Math::Cartesian3D<float>,ROOT::Math::GlobalCoordinateSystemTag> >"/>
+
    <!-- LArSoft structures -->
  <class name="geo::CryostatID"             ClassVersion="18"                   >
   <version ClassVersion="18" checksum="1964936896"/>
@@ -96,12 +101,15 @@
  <class name="recob::SpacePoint"       ClassVersion="12"                   >
   <version ClassVersion="12" checksum="4256037352"/>
  </class>
- <class name="recob::Vertex"           ClassVersion="14"                   >
+ <class name="recob::Vertex"           ClassVersion="15"                   >
+  <version ClassVersion="15" checksum="3458102325"/>
   <version ClassVersion="14" checksum="2896315066"/>
   <version ClassVersion="13" checksum="1229739518"/>
   <version ClassVersion="12" checksum="1317803878"/>
  </class>
- <class name="recob::Slice"            ClassVersion="14"                   >
+ <class name="recob::Slice"            ClassVersion="16"                   >
+  <version ClassVersion="16" checksum="167046283"/>
+  <version ClassVersion="15" checksum="1844319844"/>
   <version ClassVersion="14" checksum="2291287429"/>
   <version ClassVersion="13" checksum="2291287429"/>
   <version ClassVersion="12" checksum="2320421270"/>
@@ -466,7 +474,9 @@
   <!-- recob::Trajectory -->
   
   <!--   class -->
-  <class name="recob::Trajectory" ClassVersion="11" >
+  <class name="recob::Trajectory" ClassVersion="13" >
+   <version ClassVersion="13" checksum="3517250203"/>
+   <version ClassVersion="12" checksum="4108726986"/>
    <version ClassVersion="11" checksum="2541107521"/>
    <version ClassVersion="10" checksum="3286658271"/>
   </class>
@@ -580,7 +590,9 @@
   <class name="util::flags::FlagSet<32U, unsigned int>" />
   
   <!--   class -->
-  <class name="recob::TrackTrajectory" ClassVersion="10" >
+  <class name="recob::TrackTrajectory" ClassVersion="12" >
+   <version ClassVersion="12" checksum="330766965"/>
+   <version ClassVersion="11" checksum="79862946"/>
    <version ClassVersion="10" checksum="4198737063"/>
   </class>
   

@@ -11,6 +11,7 @@
 <!-- support classes (e.g., elements of data product classes) -->
  <class name="std::map<std::basic_string<char>,double > " />
  <class name="std::vector<std::map<std::basic_string<char>,double > >" />
+ <class name="std::vector<Double32_t>"/>
 
 <!-- Feature vectors, length 1-5                                        -->
  <class name="anab::FeatureVector<1>" ClassVersion="10"               >
@@ -95,7 +96,13 @@
  <class name="art::Wrapper< std::vector< anab::MVADescription<5> > >" />
 
 
- <class name="anab::Calorimetry"           ClassVersion="16"                           >
+ <class name="anab::Calorimetry"           ClassVersion="22"                           >
+  <version ClassVersion="22" checksum="3382455396"/>
+  <version ClassVersion="21" checksum="2995599306"/>
+  <version ClassVersion="20" checksum="308606239"/>
+  <version ClassVersion="19" checksum="4062203275"/>
+  <version ClassVersion="18" checksum="2134109695"/>
+  <version ClassVersion="17" checksum="762509302"/>
   <version ClassVersion="16" checksum="2995599306"/>
   <version ClassVersion="15" checksum="2095251371"/>
   <version ClassVersion="14" checksum="1421274164"/>
@@ -295,5 +302,19 @@
  <class name="art::Wrapper< art::Assns< simb::MCParticle, recob::PFParticle,      anab::BackTrackerMatchingData > >"  />
  <class name="art::Wrapper< art::Assns< recob::PFParticle,     simb::MCParticle,  void > >"  />
  <class name="art::Wrapper< art::Assns< recob::PFParticle,     simb::MCParticle,  anab::BackTrackerMatchingData > >"  />
+
+  <ioread
+    version="[-17]"
+    sourceClass="anab::Calorimetry"
+    source="std::vector<TVector3> fXYZ"
+    targetClass="anab::Calorimetry"
+    target="fXYZ"
+    include="TVector3.h;Math/GenVector/CoordinateSystemTags.h;Math/GenVector/Cartesian3D.h;Math/GenVector/PositionVector3D.h">
+    <![CDATA[
+      fXYZ.clear();
+      for (auto const& p: onfile.fXYZ)
+        fXYZ.emplace_back(p.X(), p.Y(), p.Z());
+    ]]>
+  </ioread>
 
 </lcgdict>

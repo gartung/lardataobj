@@ -16,22 +16,25 @@
 #include <TVector3.h>
 
 #include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
+#include "lardataobj/RecoBase/TrackingTypes.h"
 
 namespace anab {
+
+  using Point_t = recob::tracking::Point_t;
 
   class Calorimetry{
   public:
     
     Calorimetry();
 
-    double              fKineticEnergy;   ///< determined kinetic energy
-    std::vector<double> fdEdx;            ///< dE/dx, should be same size as fResidualRange
-    std::vector<double> fdQdx;            ///< dQ/dx
-    std::vector<double> fResidualRange;   ///< range from end of track    
-    std::vector<double> fDeadWireResR;    ///< dead wire residual range, collection plane
-    double              fRange;           ///< total range of track
-    std::vector<double> fTrkPitch;        ///< track pitch on collection plane
-    std::vector<TVector3> fXYZ;           ///< coordinates of space points
+    Double32_t              fKineticEnergy;   ///< determined kinetic energy
+    std::vector<Double32_t> fdEdx;            ///< dE/dx, should be same size as fResidualRange
+    std::vector<Double32_t> fdQdx;            ///< dQ/dx
+    std::vector<Double32_t> fResidualRange;   ///< range from end of track
+    std::vector<Double32_t> fDeadWireResR;    ///< dead wire residual range, collection plane
+    Double32_t              fRange;           ///< total range of track
+    std::vector<Double32_t> fTrkPitch;        ///< track pitch on collection plane
+    std::vector<Point_t> fXYZ;                ///< coordinates of space points
 
   private:
     geo::PlaneID        fPlaneID;
@@ -66,6 +69,16 @@ namespace anab {
 		std::vector<TVector3> const& XYZ,
 		geo::PlaneID planeID);
 
+    Calorimetry(double KineticEnergy,
+    		std::vector<double> const& dEdx,
+    		std::vector<double> const& dQdx,
+    		std::vector<double> const& resRange,
+    		std::vector<double> const& deadwire,
+    		double Range,
+    		std::vector<double> const& TrkPitch,
+    		std::vector<anab::Point_t> const& XYZ,
+    		geo::PlaneID planeID);
+
     friend std::ostream& operator << (std::ostream &o, Calorimetry const& a);
 
     const std::vector<double>& dEdx()          const; 
@@ -76,7 +89,8 @@ namespace anab {
     const double&              Range()         const; 
     double                     TrkPitchC()     const; 
     const std::vector<double>& TrkPitchVec()   const;
-    const std::vector<TVector3>& XYZ()         const;
+    /* const std::vector<TVector3>& XYZ()         const; */
+    const std::vector<anab::Point_t>& XYZ()         const;
     const geo::PlaneID&        PlaneID()       const;
 
     
@@ -98,7 +112,8 @@ inline double                     anab::Calorimetry::TrkPitchC()     const
     return fTrkPitch[0];
   else return 0;
 }
-inline const std::vector<TVector3>& anab::Calorimetry::XYZ()         const { return fXYZ;      }
+/* inline const std::vector<TVector3>& anab::Calorimetry::XYZ()         const { return fXYZ;      } */
+inline const std::vector<anab::Point_t>& anab::Calorimetry::XYZ()         const { return fXYZ;      }
 inline const geo::PlaneID& anab::Calorimetry::PlaneID()              const { return fPlaneID; }
 
 #endif //ANAB_CALORIMETRY_H

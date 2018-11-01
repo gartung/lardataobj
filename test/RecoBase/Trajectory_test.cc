@@ -75,9 +75,9 @@ void CheckVectorsEqual(VectA const& v, VectB const& exp) {
 
 template <typename VectA, typename VectB>
 void CheckVectorsClose(VectA const& v, VectB const& exp, double tol = 0.01) {
-  CheckValue(v.X(), exp.X(), tol, "  X()");
-  CheckValue(v.Y(), exp.Y(), tol, "  Y()");
-  CheckValue(v.Z(), exp.Z(), tol, "  Z()");
+  CheckValue(double(v.X()), double(exp.X()), tol, "  X()");
+  CheckValue(double(v.Y()), double(exp.Y()), tol, "  Y()");
+  CheckValue(double(v.Z()), double(exp.Z()), tol, "  Z()");
 } // CheckVectorsClose()
 
 
