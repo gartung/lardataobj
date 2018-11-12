@@ -12,7 +12,8 @@
 #include <map>
 #include <string>
 
-namespace recob {
+//namespace recob {
+namespace larpandoraobj {
   
    /**
    * @brief Metadata associated to PFParticles 
@@ -51,6 +52,6 @@ namespace recob {
 	  PropertiesMap   m_propertiesMap;                ///< The properties map
   
   }; // class PFParticle
-} // namespace recob
+} // namespace recob/larpandoraobj
 
 #endif //Recob_PFParticle_H
