@@ -37,6 +37,14 @@ namespace recob {
     , fView(geo::kUnknown)
     , fSignalType(geo::kMysteryType)
     , fWireID() // invalid
+    , fSummedADC1(0.)
+    , fSummedADC2(0.)
+    , fSummedADC3(0.)
+    , fSummedADC4(0.)
+    , fSummedADC5(0.)
+    , fSummedADC6(0.)
+    , fSummedADC7(0.)
+    , fSummedADC8(0.)
     {}
   
   //----------------------------------------------------------------------
@@ -58,7 +66,15 @@ namespace recob {
     int                     dof,
     geo::View_t             view,
     geo::SigType_t          signal_type,
-    geo::WireID             wireID
+    geo::WireID             wireID,
+    float      	       	    summedADC1,
+    float                   summedADC2,
+    float      	       	    summedADC3,
+    float      	       	    summedADC4,
+    float      	       	    summedADC5,
+    float      	       	    summedADC6,
+    float      	       	    summedADC7,
+    float      	       	    summedADC8
     )
     : fChannel(channel)
     , fStartTick(start_tick)
@@ -78,6 +94,14 @@ namespace recob {
     , fView(view)
     , fSignalType(signal_type)
     , fWireID(wireID)
+    , fSummedADC1(summedADC1)
+    , fSummedADC2(summedADC2)
+    , fSummedADC3(summedADC3)
+    , fSummedADC4(summedADC4)
+    , fSummedADC5(summedADC5)
+    , fSummedADC6(summedADC6)
+    , fSummedADC7(summedADC7)
+    , fSummedADC8(summedADC8)
   {}
   
   
@@ -126,3 +150,4 @@ namespace recob {
   
   //----------------------------------------------------------------------
 } // namespace recob
+

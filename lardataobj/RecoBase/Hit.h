@@ -16,6 +16,10 @@
  *   data architecture revision changes (v14 -> v15):
  *   - removed fHitSignal
  * 
+ *
+ * Joel Greer jgreer_FPGA_Hitfinding feature branch. Redefining a hit to also
+ * have the capability of storing information about summed ADC in configurable 
+ * tick length regions before and after it
  * ****************************************************************************/
 
 #ifndef LARDATAOBJ_RECOBASE_HIT_H
@@ -71,6 +75,15 @@ namespace recob {
       geo::View_t             fView;           ///< view for the plane of the hit
       geo::SigType_t          fSignalType;     ///< signal type for the plane of the hit
       geo::WireID             fWireID;         ///< WireID for the hit (Cryostat, TPC, Plane, Wire)
+      
+      float                   fSummedADC1;     ///< sum of calibrated ADC counts of the earliest region defined to be calc'd before hit
+      float                   fSummedADC2;     ///< sum of calibrated ADC counts of the 2nd earliest region defined to be calc'd before hit
+      float    	       	      fSummedADC3;     ///< sum of calibrated ADC counts of the 3rd earliest region defined to be calc'd before hit
+      float    	       	      fSummedADC4;     ///< sum of calibrated ADC counts of the 4th earliest region defined to be calc'd before hit
+      float                   fSummedADC5;     ///< sum of calibrated ADC counts of the 4th latest region defined to be calc'd after hit
+      float                   fSummedADC6;     ///< sum of calibrated ADC counts of the 3rd latest region defined to be calc'd after hit
+      float                   fSummedADC7;     ///< sum of calibrated ADC counts of the 2nd latest region defined to be calc'd after hit
+      float                   fSummedADC8;     ///< sum of calibrated ADC counts of the latest region defined to be calc'd after hit
 
       friend class HitCreator; // helper to create hits
       
@@ -117,7 +130,16 @@ namespace recob {
         int                     dof,
         geo::View_t             view,
         geo::SigType_t          signal_type,
-        geo::WireID             wireID
+        geo::WireID             wireID,
+         
+        float                   summedADC1,
+       	float  	       	       	summedADC2,
+       	float  	       	       	summedADC3,
+       	float  	       	       	summedADC4,
+       	float  	       	       	summedADC5,
+       	float  	       	       	summedADC6,
+       	float  	       	       	summedADC7,
+       	float  	       	       	summedADC8
         );
       
       /// @{
@@ -177,6 +199,30 @@ namespace recob {
       ///< ID of the wire the hit is on (Cryostat, TPC, Plane, Wire)
       geo::WireID             WireID()                    const;
       
+      /// The sum of calibrated ADC counts earliest before hit (0. by default)
+      float                   SummedADC1()                 const;
+
+      /// The sum of calibrated ADC counts 2nd earliest before hit (0. by default)
+      float                   SummedADC2()                 const;
+
+      /// The sum of calibrated ADC counts 3rd earliest before hit (0. by default)
+      float                   SummedADC3()                 const;
+
+      /// The sum of calibrated ADC counts 4th earliest before hit (0. by default)
+      float                   SummedADC4()                 const;
+
+      /// The sum of calibrated ADC counts 4th latest after hit (0. by default)
+      float                   SummedADC5()                 const;
+
+      /// The sum of calibrated ADC counts 3rd latest after hit (0. by default)
+      float                   SummedADC6()                 const;
+
+      /// The sum of calibrated ADC counts 2nd latest after hit (0. by default)
+      float                   SummedADC7()                 const;
+
+      /// The sum of calibrated ADC counts latest after hit (0. by default)
+      float                   SummedADC8()                 const;
+
       /// @}
       
       //@{
@@ -233,6 +279,14 @@ inline geo::SigType_t          recob::Hit::SignalType()     const { return fSign
 inline geo::View_t             recob::Hit::View()           const { return fView;          }
 inline geo::WireID             recob::Hit::WireID()         const { return fWireID;        }
 
+inline float                   recob::Hit::SummedADC1()     const { return fSummedADC1;    }
+inline float                   recob::Hit::SummedADC2()     const { return fSummedADC2;    }
+inline float                   recob::Hit::SummedADC3()     const { return fSummedADC3;    }
+inline float                   recob::Hit::SummedADC4()     const { return fSummedADC4;    }
+inline float                   recob::Hit::SummedADC5()     const { return fSummedADC5;    }
+inline float                   recob::Hit::SummedADC6()     const { return fSummedADC6;    }
+inline float                   recob::Hit::SummedADC7()     const { return fSummedADC7;    }
+inline float                   recob::Hit::SummedADC8()     const { return fSummedADC8;    }
 
 inline float recob::Hit::PeakTimePlusRMS(float sigmas /* = +1. */) const
   { return PeakTime() + sigmas * RMS(); }
