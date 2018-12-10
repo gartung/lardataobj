@@ -65,7 +65,15 @@ void CheckHit(
   int                       dof,
   geo::View_t               view,
   geo::SigType_t            signal_type,
-  geo::WireID               wireID
+  geo::WireID               wireID,
+  float                     summedADC1,
+  float                     summedADC2,
+  float                     summedADC3,
+  float                     summedADC4,
+  float                     summedADC5,
+  float                     summedADC6,
+  float                     summedADC7,
+  float                     summedADC8
 ) {
   
   // verify that the values are as expected
@@ -135,7 +143,9 @@ void CheckHit(
   BOOST_CHECK_EQUAL(hit.SummedADC(), summedADC);
   BOOST_CHECK_EQUAL(hit.Integral(), hit_integral);
   BOOST_CHECK_EQUAL(hit.SigmaIntegral(), hit_sigma_integral);
-  
+  //could also add checking for ie: BOOST_CHECK_EQUAL(hit.SummedADC1(),summedADC1);etc  
+
+
   // - multiplicity
   BOOST_CHECK_EQUAL(hit.Multiplicity(), multiplicity);
   BOOST_CHECK_EQUAL(hit.LocalIndex(), local_index);
@@ -176,7 +186,15 @@ void HitTestDefaultConstructor() {
   geo::View_t        view                  =    geo::kUnknown;
   geo::SigType_t     signal_type           =    geo::kMysteryType;
   geo::WireID        wireID;
-  
+  float              summedADC1            =    0.0;
+  float              summedADC2            =    0.0;
+  float              summedADC3            =    0.0;
+  float              summedADC4            =    0.0;
+  float              summedADC5            =    0.0;
+  float              summedADC6            =    0.0;
+  float              summedADC7            =    0.0;
+  float              summedADC8            =    0.0;
+
   //
   // Part II: default constructor
   //
@@ -202,7 +220,15 @@ void HitTestDefaultConstructor() {
     dof,
     view,
     signal_type,
-    wireID
+    wireID,
+    summedADC1,
+    summedADC2,
+    summedADC3,
+    summedADC4,
+    summedADC5,
+    summedADC6,
+    summedADC7,
+    summedADC8
     );
   
 } // HitTestDefaultConstructor()
@@ -239,7 +265,14 @@ void HitTestCustomConstructors() {
   geo::View_t        view                  =    geo::kU;
   geo::SigType_t     signal_type           =    geo::kCollection;
   geo::WireID        wireID(0, 1, 2, 546);
-  
+  float              summedADC1            = 0.0;
+  float              summedADC2            = 0.0;
+  float              summedADC3            = 0.0;
+  float              summedADC4            = 0.0;
+  float              summedADC5            = 0.0;
+  float              summedADC6            = 0.0;
+  float              summedADC7            = 0.0;
+  float              summedADC8            = 0.0;
   
   //
   // Part II: complete constructor
@@ -263,7 +296,15 @@ void HitTestCustomConstructors() {
     dof,
     view,
     signal_type,
-    wireID
+    wireID,
+    summedADC1,
+    summedADC2,
+    summedADC3,
+    summedADC4,
+    summedADC5,
+    summedADC6,
+    summedADC7,
+    summedADC8
     );
   
   // step II.2: verify that the values are as expected
@@ -285,7 +326,15 @@ void HitTestCustomConstructors() {
     dof,
     view,
     signal_type,
-    wireID
+    wireID,
+    summedADC1,
+    summedADC2,
+    summedADC3,
+    summedADC4,
+    summedADC5,
+    summedADC6,
+    summedADC7,
+    summedADC8
     );
   
 } // HitTestCustomConstructors()
