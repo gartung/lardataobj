@@ -84,6 +84,7 @@ namespace recob {
       float                   fSummedADC6;     ///< sum of calibrated ADC counts of the 3rd latest region defined to be calc'd after hit
       float                   fSummedADC7;     ///< sum of calibrated ADC counts of the 2nd latest region defined to be calc'd after hit
       float                   fSummedADC8;     ///< sum of calibrated ADC counts of the latest region defined to be calc'd after hit
+      bool                    fContinues;      ///< does hit continue up to last adc sample in packet. If yes->true
 
       friend class HitCreator; // helper to create hits
       
@@ -139,7 +140,8 @@ namespace recob {
        	float  	       	       	summedADC5,
        	float  	       	       	summedADC6,
        	float  	       	       	summedADC7,
-       	float  	       	       	summedADC8
+       	float  	       	       	summedADC8,
+        bool                    continues
         );
       
       /// @{
@@ -223,6 +225,9 @@ namespace recob {
       /// The sum of calibrated ADC counts latest after hit (0. by default)
       float                   SummedADC8()                 const;
 
+      /// Bool true if hit continues up to last adc sample in packet
+      bool                    Continues()                  const;
+
       /// @}
       
       //@{
@@ -287,6 +292,7 @@ inline float                   recob::Hit::SummedADC5()     const { return fSumm
 inline float                   recob::Hit::SummedADC6()     const { return fSummedADC6;    }
 inline float                   recob::Hit::SummedADC7()     const { return fSummedADC7;    }
 inline float                   recob::Hit::SummedADC8()     const { return fSummedADC8;    }
+inline bool                    recob::Hit::Continues()      const { return fContinues;     }
 
 inline float recob::Hit::PeakTimePlusRMS(float sigmas /* = +1. */) const
   { return PeakTime() + sigmas * RMS(); }

@@ -73,7 +73,8 @@ void CheckHit(
   float                     summedADC5,
   float                     summedADC6,
   float                     summedADC7,
-  float                     summedADC8
+  float                     summedADC8,
+  bool                      continues
 ) {
   
   // verify that the values are as expected
@@ -194,6 +195,7 @@ void HitTestDefaultConstructor() {
   float              summedADC6            =    0.0;
   float              summedADC7            =    0.0;
   float              summedADC8            =    0.0;
+  bool               continues             =    false;
 
   //
   // Part II: default constructor
@@ -228,7 +230,8 @@ void HitTestDefaultConstructor() {
     summedADC5,
     summedADC6,
     summedADC7,
-    summedADC8
+    summedADC8,
+    continues
     );
   
 } // HitTestDefaultConstructor()
@@ -273,7 +276,8 @@ void HitTestCustomConstructors() {
   float              summedADC6            = 0.0;
   float              summedADC7            = 0.0;
   float              summedADC8            = 0.0;
-  
+  bool               continues             = false;  
+
   //
   // Part II: complete constructor
   //
@@ -304,7 +308,8 @@ void HitTestCustomConstructors() {
     summedADC5,
     summedADC6,
     summedADC7,
-    summedADC8
+    summedADC8,
+    continues
     );
   
   // step II.2: verify that the values are as expected
@@ -334,7 +339,8 @@ void HitTestCustomConstructors() {
     summedADC5,
     summedADC6,
     summedADC7,
-    summedADC8
+    summedADC8,
+    continues
     );
   
 } // HitTestCustomConstructors()

@@ -45,6 +45,7 @@ namespace recob {
     , fSummedADC6(0.)
     , fSummedADC7(0.)
     , fSummedADC8(0.)
+    , fContinues(false)
     {}
   
   //----------------------------------------------------------------------
@@ -74,7 +75,8 @@ namespace recob {
     float      	       	    summedADC5,
     float      	       	    summedADC6,
     float      	       	    summedADC7,
-    float      	       	    summedADC8
+    float      	       	    summedADC8,
+    bool                    continues
     )
     : fChannel(channel)
     , fStartTick(start_tick)
@@ -102,6 +104,7 @@ namespace recob {
     , fSummedADC6(summedADC6)
     , fSummedADC7(summedADC7)
     , fSummedADC8(summedADC8)
+    , fContinues(continues)
   {}
   
   
