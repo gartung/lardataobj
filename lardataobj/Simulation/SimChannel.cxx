@@ -60,7 +60,7 @@ namespace sim{
     // vector, or update the information if track is already present
     
     // no electrons? no energy? no good!
-    if ((numberElectrons < std::numeric_limits<double>::epsilon())
+    if ((std::abs(numberElectrons) < std::numeric_limits<double>::epsilon())
       || (energy <= std::numeric_limits<double>::epsilon()))
     {
       // will throw
