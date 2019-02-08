@@ -69,6 +69,9 @@
   <version ClassVersion="11" checksum="394157494"/>
   <version ClassVersion="10" checksum="155859597"/>
  </class>
+ <class name="sim::Waveform" Classversion="0">
+     <version ClassVersion="0" checksum="1286084441"/>
+ </class>
  <enum name="sim::BeamType_t"                                      />
  <class name="art::Ptr<sim::SupernovaTruth>"                       />
  <class name="std::pair< art::Ptr<sim::SupernovaTruth>, art::Ptr<simb::MCTruth> >" />
@@ -88,6 +91,7 @@
  <class name="std::vector<sim::OpDetBacktrackerRecord>"                      />
  <class name="std::vector<sim::SupernovaTruth>"                    />
  <class name="std::vector<sim::SimDriftedElectronCluster>"                    />
+ <class name="std::vector<sim::Waveform>"                    />
  <class name="sim::TDCIDE"                                         />
  <class name="std::vector<sim::TDCIDE>"            	               />
  <class name="sim::SDP" />
@@ -104,6 +108,7 @@
  <class name="art::Wrapper< std::vector<sim::OpDetBacktrackerRecord> >"      />
  <class name="art::Wrapper< std::vector<sim::SupernovaTruth> >"      />
  <class name="art::Wrapper< std::vector<sim::SimDriftedElectronCluster> >"      />
+ <class name="art::Wrapper< std::vector<sim::Waveform> >"      />
  <class name="art::Wrapper< art::Assns<sim::SupernovaTruth, simb::MCTruth, void> >" />
  <class name="art::Wrapper< art::Assns<simb::MCTruth, sim::SupernovaTruth, void> >" />
 
