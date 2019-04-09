@@ -34,13 +34,12 @@ cet_set_compiler_flags(DIAGS CAUTIOUS
 cet_report_compiler_flags()
 
 # these are minimum required versions, not the actual product versions
-find_ups_product( canvas )
-find_ups_product( larcoreobj )
-find_ups_product( larcorealg )
-find_ups_product( nusimdata )
-find_ups_boost( )
-find_ups_root()
-find_ups_product( cetbuildtools )
+find_package(Boost REQUIRED COMPONENTS date_time filesystem graph program_options
+  regex system unit_test_framework)
+find_package( ROOT REQUIRED COMPONENTS Core Physics Matrix GenVector)
+find_package( larcoreobj )
+find_package( larcorealg )
+find_package( nusimdata )
 
 # macros for artdaq_dictionary and simple_plugin
 include(ArtDictionary)
@@ -53,8 +52,4 @@ add_subdirectory(lardataobj)
 # tests
 add_subdirectory(test)
 
-# ups - table and config files
-add_subdirectory(ups)
-
-# packaging utility
-include(UseCPack)
+add_subdirectory(cmakeConfig)

@@ -1,3 +1,4 @@
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-sign-compare")
 cet_test(Wire_test USE_BOOST_UNIT
   LIBRARIES lardataobj_RecoBase
   )
