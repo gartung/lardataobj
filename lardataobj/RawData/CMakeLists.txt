@@ -2,7 +2,7 @@ cet_make( LIBRARIES larcoreobj_SummaryData
 		    canvas
 		    MF_MessageLogger
                    cetlib_except
-                   ${ROOT_CORE}
+                   ROOT::Core
                     NO_DICTIONARY )
 
 art_dictionary( DICTIONARY_LIBRARIES lardataobj_RawData )

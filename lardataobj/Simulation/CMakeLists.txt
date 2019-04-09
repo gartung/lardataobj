@@ -3,8 +3,8 @@ cet_make( LIBRARIES nusimdata_SimulationBase
                     MF_MessageLogger
                    cetlib
                    cetlib_except
-                   ${ROOT_CORE}
-                   ${ROOT_PHYSICS}
+                   ROOT::Core
+                   ROOT::Physics
                    NO_DICTIONARY)
 
 art_dictionary( DICTIONARY_LIBRARIES lardataobj_Simulation )
