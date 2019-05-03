@@ -6,5 +6,4 @@ cet_make( LIBRARIES canvas
 art_dictionary( DICTIONARY_LIBRARIES lardataobj_AnalysisBase  nusimdata_SimulationBase)
 
 install_headers()
-install_fhicl()
 install_source()
