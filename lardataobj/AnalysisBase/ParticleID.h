@@ -13,6 +13,7 @@
 #include <iostream>
 #include <iomanip>
 #include <bitset>
+#include <vector>
 #include "larcoreobj/SimpleTypesAndConstants/geo_types.h"
 #include "lardataobj/AnalysisBase/ParticleID_VariableTypeEnums.h"
 
@@ -43,7 +44,7 @@ struct sParticleIDAlgScores { ///< determined particle ID
 
     ParticleID();
 
-    std::vector<sParticleIDAlgScores> fParticleIDAlgScores; ///< Vector of structs to hold outputs from generic PID algorithms
+    std::vector<anab::sParticleIDAlgScores> fParticleIDAlgScores; ///< Vector of structs to hold outputs from generic PID algorithms
 
   public:
 
