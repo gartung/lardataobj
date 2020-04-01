@@ -9,4 +9,3 @@ cet_test(RawDigit_test USE_BOOST_UNIT
   )
 
 install_headers()
-install_source()
